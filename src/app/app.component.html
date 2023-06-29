@@ -1,3 +1,8 @@
 <div>
-  <h1 appHighlight *appUnless="false">test</h1>
+  <div appHighlight *appUnless="false" [ngSwitch]="title">
+    <p *ngSwitchCase="'title'">Title</p>
+    <p *ngSwitchCase="'test'">Title</p>
+    <p *ngSwitchCase="'fly'">Title</p>
+    <p *ngSwitchDefault>Default</p>
+  </div>
 </div>
