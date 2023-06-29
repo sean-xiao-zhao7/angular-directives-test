@@ -12,4 +12,8 @@ export class UsersService {
   ];
 
   constructor() {}
+
+  addUser(name: string, email: string) {
+    this.users.push({ name: name, email: email });
+  }
 }
