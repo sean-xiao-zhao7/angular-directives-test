@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
+import { LoggingService } from './logging.service';
 
 @Injectable({
   providedIn: 'root',
 })
+@Injectable()
 export class UsersService {
   users = [
     {
@@ -11,7 +13,7 @@ export class UsersService {
     },
   ];
 
-  constructor() {}
+  constructor(private loggingService: LoggingService) {}
 
   addUser(name: string, email: string) {
     this.users.push({ name: name, email: email });
