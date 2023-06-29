@@ -1,4 +1,10 @@
-import { Directive, ElementRef, OnInit, Renderer2 } from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  HostListener,
+  OnInit,
+  Renderer2,
+} from '@angular/core';
 
 @Directive({
   selector: '[appHighlight]',
@@ -11,6 +17,22 @@ export class HighlightDirective implements OnInit {
       this.elementRef.nativeElement,
       'background-color',
       'red'
+    );
+  }
+
+  @HostListener('mouseenter') mouseover(eventData: Event) {
+    this.renderer.setStyle(
+      this.elementRef.nativeElement,
+      'background-color',
+      'green'
+    );
+  }
+
+  @HostListener('mouseleave') mouseleave(eventData: Event) {
+    this.renderer.setStyle(
+      this.elementRef.nativeElement,
+      'background-color',
+      'blue'
     );
   }
 }
