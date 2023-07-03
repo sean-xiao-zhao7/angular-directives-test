@@ -9,7 +9,7 @@ export const appRoutes = [
     component: UsersComponent,
   },
   {
-    path: 'user',
+    path: 'users/:userId',
     component: UserDetailsComponent,
   },
 ];
