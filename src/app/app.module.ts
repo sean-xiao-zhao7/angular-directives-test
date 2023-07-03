@@ -8,6 +8,7 @@ import { LoggingService } from './services/logging.service';
 import { RouterModule, Routes } from '@angular/router';
 import { appRoutes } from './routes/app.routes';
 import { UsersComponent } from './components/users/users.component';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = appRoutes;
 
@@ -17,6 +18,7 @@ const routes: Routes = appRoutes;
     HighlightDirective,
     UnlessDirective,
     UsersComponent,
+    HomeComponent,
   ],
   imports: [BrowserModule, RouterModule.forRoot(routes)],
   providers: [UsersService, LoggingService],
