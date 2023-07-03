@@ -5,15 +5,20 @@ import { HighlightDirective } from './directives/highlight.directive';
 import { UnlessDirective } from './directives/unless.directive';
 import { UsersService } from './services/users.service';
 import { LoggingService } from './services/logging.service';
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { appRoutes } from './routes/app.routes';
 import { UsersComponent } from './components/users/users.component';
 
 const routes: Routes = appRoutes;
 
 @NgModule({
-  declarations: [AppComponent, HighlightDirective, UnlessDirective, UsersComponent],
-  imports: [BrowserModule],
+  declarations: [
+    AppComponent,
+    HighlightDirective,
+    UnlessDirective,
+    UsersComponent,
+  ],
+  imports: [BrowserModule, RouterModule.forRoot(routes)],
   providers: [UsersService, LoggingService],
   bootstrap: [AppComponent],
 })
