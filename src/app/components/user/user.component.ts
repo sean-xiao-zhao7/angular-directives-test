@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -8,7 +9,11 @@ import { Component, Input, OnInit } from '@angular/core';
 export class UserComponent implements OnInit {
   @Input() userId: string = '';
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
+
+  seeUserDetails(userId: string) {
+    this.router.navigate(['/user']);
+  }
 }
