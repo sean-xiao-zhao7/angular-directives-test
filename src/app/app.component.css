@@ -3,3 +3,7 @@ nav {
   grid-template-columns: repeat(2, max-content);
   grid-column-gap: 1rem;
 }
+
+nav > .active {
+  color: green;
+}
