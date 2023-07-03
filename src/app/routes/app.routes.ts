@@ -1,4 +1,5 @@
 import { HomeComponent } from '../components/home/home.component';
+import { UserDetailsComponent } from '../components/user-details/user-details.component';
 import { UsersComponent } from '../components/users/users.component';
 
 export const appRoutes = [
@@ -6,5 +7,9 @@ export const appRoutes = [
   {
     path: 'users',
     component: UsersComponent,
+  },
+  {
+    path: 'user',
+    component: UserDetailsComponent,
   },
 ];
