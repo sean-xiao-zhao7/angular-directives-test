@@ -9,6 +9,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { appRoutes } from './routes/app.routes';
 import { UsersComponent } from './components/users/users.component';
 import { HomeComponent } from './components/home/home.component';
+import { UserComponent } from './components/user/user.component';
 
 const routes: Routes = appRoutes;
 
@@ -19,6 +20,7 @@ const routes: Routes = appRoutes;
     UnlessDirective,
     UsersComponent,
     HomeComponent,
+    UserComponent,
   ],
   imports: [BrowserModule, RouterModule.forRoot(routes)],
   providers: [UsersService, LoggingService],

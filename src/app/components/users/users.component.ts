@@ -7,6 +7,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./users.component.css'],
 })
 export class UsersComponent implements OnInit {
+  users: string[] = ['User 1', 'User 2'];
+
   constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {}
