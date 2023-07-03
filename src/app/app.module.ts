@@ -7,11 +7,12 @@ import { UsersService } from './services/users.service';
 import { LoggingService } from './services/logging.service';
 import { Routes } from '@angular/router';
 import { appRoutes } from './routes/app.routes';
+import { UsersComponent } from './components/users/users.component';
 
 const routes: Routes = appRoutes;
 
 @NgModule({
-  declarations: [AppComponent, HighlightDirective, UnlessDirective],
+  declarations: [AppComponent, HighlightDirective, UnlessDirective, UsersComponent],
   imports: [BrowserModule],
   providers: [UsersService, LoggingService],
   bootstrap: [AppComponent],
