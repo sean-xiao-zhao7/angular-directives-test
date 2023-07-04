@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class AuthService {
-  private _authenticated: boolean = false;
+  private _authenticated: boolean = true;
 
   constructor() {}
 
@@ -20,7 +20,7 @@ export class AuthService {
     return new Promise<boolean>((resolve, _) => {
       setTimeout(() => {
         resolve(this._authenticated);
-      }, 1000);
+      }, 100);
     });
   }
 }
