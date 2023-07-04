@@ -10,15 +10,17 @@ export const appRoutes = [
   {
     path: 'users',
     component: UsersComponent,
+    canActivate: [AuthGuardService],
     children: [
       {
         path: ':userId',
         component: UserDetailsComponent,
+        canActivateChild: [AuthGuardService],
       },
       {
         path: ':userId/edit',
         component: EditUserComponent,
-        canActivate: [AuthGuardService],
+        canActivateChild: [AuthGuardService],
       },
     ],
   },
