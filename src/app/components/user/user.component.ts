@@ -14,6 +14,10 @@ export class UserComponent implements OnInit {
   ngOnInit(): void {}
 
   seeUserDetails(userId: string) {
-    this.router.navigate(['/users/', userId]);
+    this.router.navigate(['/users', userId]);
+  }
+
+  editUser(userId: string) {
+    this.router.navigate(['/users', userId, 'edit']);
   }
 }
