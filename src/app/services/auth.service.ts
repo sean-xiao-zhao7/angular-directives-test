@@ -16,8 +16,8 @@ export class AuthService {
     this._authenticated = false;
   }
 
-  authenticationStatus() {
-    const promise = new Promise((resolve, reject) => {
+  getAuthenticationStatus() {
+    return new Promise<boolean>((resolve, _) => {
       setTimeout(() => {
         resolve(this._authenticated);
       }, 1000);
