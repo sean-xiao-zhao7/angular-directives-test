@@ -12,4 +12,8 @@ export const appRoutes = [
     path: 'users/:userId',
     component: UserDetailsComponent,
   },
+  {
+    path: 'users/:userId/edit',
+    component: UserDetailsComponent,
+  },
 ];
