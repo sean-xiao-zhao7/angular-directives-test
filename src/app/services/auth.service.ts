@@ -4,21 +4,23 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class AuthService {
-  private authenticated: boolean = false;
+  private _authenticated: boolean = false;
 
   constructor() {}
 
   authenticate() {
-    this.authenticated = true;
+    this._authenticated = true;
   }
 
   unauthenticate() {
-    this.authenticated = false;
+    this._authenticated = false;
   }
 
   authenticationStatus() {
-    setTimeout(() => {
-      return this.authenticated;
-    }, 3000);
+    const promise = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(this._authenticated);
+      }, 1000);
+    });
   }
 }
