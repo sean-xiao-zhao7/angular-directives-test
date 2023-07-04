@@ -10,8 +10,9 @@ import { Subscription } from 'rxjs';
 export class EditUserComponent implements OnInit, OnDestroy {
   userId: string = '';
   time: string = '';
-  paramsSub: any;
-  queryParamsSub: Subscription;
+  private paramsSub: any;
+  private queryParamsSub: Subscription;
+  private allowNavAway: boolean = true;
 
   constructor(private route: ActivatedRoute) {
     this.paramsSub = this.route.params.subscribe((params) => {
@@ -27,5 +28,9 @@ export class EditUserComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.paramsSub.unsubscribe();
     this.queryParamsSub.unsubscribe();
+  }
+
+  setAllowNavAway(status: boolean) {
+    this.allowNavAway = status;
   }
 }
