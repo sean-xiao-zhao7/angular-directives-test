@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -14,7 +14,7 @@ export class EditUserComponent implements OnInit, OnDestroy {
   private queryParamsSub: Subscription;
   private allowNavAway: boolean = true;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private router: Router) {
     this.paramsSub = this.route.params.subscribe((params) => {
       this.userId = params['userId'];
     });
