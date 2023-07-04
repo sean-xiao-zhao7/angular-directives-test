@@ -18,6 +18,9 @@ export class UserComponent implements OnInit {
   }
 
   editUser(userId: string) {
-    this.router.navigate(['/users', userId, 'edit']);
+    this.router.navigate(['/users', userId, 'edit'], {
+      queryParams: { time: new Date().toLocaleDateString() },
+      fragment: 'test',
+    });
   }
 }
