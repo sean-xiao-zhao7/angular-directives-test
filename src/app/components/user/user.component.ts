@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -9,16 +9,17 @@ import { Router } from '@angular/router';
 export class UserComponent implements OnInit {
   @Input() userId: string = '';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {}
 
   seeUserDetails(userId: string) {
-    this.router.navigate(['/users', userId]);
+    this.router.navigate([userId], { relativeTo: this.route });
   }
 
   editUser(userId: string) {
-    this.router.navigate(['/users', userId, 'edit'], {
+    this.router.navigate([userId, 'edit'], {
+      relativeTo: this.route,
       queryParams: { time: new Date().toLocaleDateString() },
       fragment: 'test',
     });
