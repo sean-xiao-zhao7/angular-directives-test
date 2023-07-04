@@ -8,13 +8,15 @@ export const appRoutes = [
   {
     path: 'users',
     component: UsersComponent,
-  },
-  {
-    path: 'users/:userId',
-    component: UserDetailsComponent,
-  },
-  {
-    path: 'users/:userId/edit',
-    component: EditUserComponent,
+    children: [
+      {
+        path: ':userId',
+        component: UserDetailsComponent,
+      },
+      {
+        path: ':userId/edit',
+        component: EditUserComponent,
+      },
+    ],
   },
 ];
