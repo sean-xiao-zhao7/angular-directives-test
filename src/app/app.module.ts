@@ -29,7 +29,7 @@ const routes: Routes = appRoutes;
     NotFoundComponent,
   ],
   imports: [BrowserModule, RouterModule.forRoot(routes)],
-  providers: [UsersService, LoggingService],
+  providers: [UsersService, LoggingService, EditUserComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

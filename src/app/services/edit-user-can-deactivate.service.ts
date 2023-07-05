@@ -14,7 +14,7 @@ import { Observable } from 'rxjs';
 export class EditUserCanDeactivateService
   implements CanDeactivate<EditUserComponent>
 {
-  constructor(private editUserComponet: EditUserComponent) {}
+  constructor() {}
 
   canDeactivate(
     component: EditUserComponent,
@@ -26,6 +26,6 @@ export class EditUserCanDeactivateService
     | UrlTree
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
-    return this.editUserComponet.allowNavAway;
+    return component.allowNavAway;
   }
 }
