@@ -28,7 +28,7 @@ export const appRoutes = [
   },
   {
     path: 'not-found',
-    NotFoundComponent,
+    component: NotFoundComponent,
     data: { message: 'Page not found. (404)' },
   },
   { path: '**', redirectTo: '/not-found' },
