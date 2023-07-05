@@ -1,4 +1,5 @@
 import { EditUserComponent } from '../components/edit-user/edit-user.component';
+import { ErrorPageComponent } from '../components/error-page/error-page.component';
 import { HomeComponent } from '../components/home/home.component';
 import { NotFoundComponent } from '../components/not-found/not-found.component';
 import { UserDetailsComponent } from '../components/user-details/user-details.component';
@@ -28,7 +29,7 @@ export const appRoutes = [
   },
   {
     path: 'not-found',
-    component: NotFoundComponent,
+    component: ErrorPageComponent,
     data: { message: 'Page not found. (404)' },
   },
   { path: '**', redirectTo: '/not-found' },
