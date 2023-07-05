@@ -13,7 +13,6 @@ import { UserComponent } from './components/user/user.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { EditUserCanDeactivateComponent } from './services/edit-user-can-deactivate/edit-user-can-deactivate.component';
 
 const routes: Routes = appRoutes;
 
@@ -28,7 +27,6 @@ const routes: Routes = appRoutes;
     UserDetailsComponent,
     EditUserComponent,
     NotFoundComponent,
-    EditUserCanDeactivateComponent,
   ],
   imports: [BrowserModule, RouterModule.forRoot(routes)],
   providers: [UsersService, LoggingService],

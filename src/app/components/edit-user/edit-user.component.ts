@@ -12,7 +12,7 @@ export class EditUserComponent implements OnInit, OnDestroy {
   time: string = '';
   private paramsSub: any;
   private queryParamsSub: Subscription;
-  private allowNavAway: boolean = true;
+  allowNavAway: boolean = false;
 
   constructor(private route: ActivatedRoute, private router: Router) {
     this.paramsSub = this.route.params.subscribe((params) => {
