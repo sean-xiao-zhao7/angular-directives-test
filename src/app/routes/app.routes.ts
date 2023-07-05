@@ -26,5 +26,6 @@ export const appRoutes = [
       },
     ],
   },
-  { path: '**', component: NotFoundComponent },
+  { path: 'not-found', NotFoundComponent },
+  { path: '**', redirectTo: '/not-found' },
 ];
