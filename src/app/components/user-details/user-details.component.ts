@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-user-details',
@@ -9,7 +10,7 @@ import { Subscription } from 'rxjs';
 })
 export class UserDetailsComponent implements OnInit, OnDestroy {
   userId: string = '';
-  user: { name: string; email: string } = { name: '', email: '' };
+  user: User = new User('', '');
   private sub: Subscription;
 
   constructor(private route: ActivatedRoute) {
