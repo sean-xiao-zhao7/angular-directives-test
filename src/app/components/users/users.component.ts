@@ -17,7 +17,9 @@ export class UsersComponent implements OnInit {
     private usersService: UsersService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.users = this.usersService.getUsers();
+  }
 
   goHome() {
     this.router.navigate(['/'], { relativeTo: this.route });

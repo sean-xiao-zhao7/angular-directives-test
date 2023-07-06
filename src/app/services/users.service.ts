@@ -17,6 +17,10 @@ export class UsersService implements OnInit {
     this.addUser('User 3', 'user3@test.com');
   }
 
+  getUsers() {
+    return this.users
+  }
+
   addUser(name: string, email: string) {
     this.users.push(new User(name, email);
   }
