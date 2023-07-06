@@ -18,16 +18,19 @@ export class UsersService implements OnInit {
   }
 
   getUsers() {
-    return this.users
+    return this.users;
   }
 
   addUser(name: string, email: string) {
-    this.users.push(new User(name, email);
+    this.users.push(new User(name, email));
   }
 
   getUser(name: string) {
-    const result = this.users.find((u) => u.getName() === name);
-    if (!result) return { name: 'Not found', email: '' };
-    return result;
+    const targetUser = this.users.find((u) => u.getName() === name);
+    if (!targetUser) {
+      return new User('Not found', '');
+    } else {
+      return targetUser;
+    }
   }
 }
