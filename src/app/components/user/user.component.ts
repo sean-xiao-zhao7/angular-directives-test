@@ -7,18 +7,18 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./user.component.css'],
 })
 export class UserComponent implements OnInit {
-  @Input() userId: string = '';
+  @Input() name: string = '';
 
   constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {}
 
-  seeUserDetails(userId: string) {
-    this.router.navigate([userId], { relativeTo: this.route });
+  seeUserDetails(name: string) {
+    this.router.navigate([name], { relativeTo: this.route });
   }
 
   editUser(userId: string) {
-    this.router.navigate([userId, 'edit'], {
+    this.router.navigate([name, 'edit'], {
       relativeTo: this.route,
       queryParams: { time: new Date().toLocaleDateString() },
       fragment: 'test',

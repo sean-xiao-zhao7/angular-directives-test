@@ -15,13 +15,13 @@ export const appRoutes = [
     canActivate: [AuthGuardService],
     children: [
       {
-        path: ':userId',
+        path: ':name',
         component: UserDetailsComponent,
         canActivateChild: [AuthGuardService],
         resolve: { user: UserResolverService },
       },
       {
-        path: ':userId/edit',
+        path: ':name/edit',
         component: EditUserComponent,
         canActivateChild: [AuthGuardService],
         canDeactivate: [EditUserCanDeactivateService],
