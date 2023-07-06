@@ -18,4 +18,10 @@ export class UsersService {
   addUser(name: string, email: string) {
     this.users.push({ name: name, email: email });
   }
+
+  getUser(name: string) {
+    const result = this.users.find((u) => u.name === name);
+    if (!result) return { name: 'Not found', email: '' };
+    return result;
+  }
 }
