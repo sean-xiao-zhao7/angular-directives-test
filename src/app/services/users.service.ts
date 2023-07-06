@@ -7,15 +7,15 @@ import { User } from '../models/user';
 })
 @Injectable()
 export class UsersService implements OnInit {
-  private users: User[] = [];
+  private users: User[] = [
+    new User('User 1', 'user1@test.com'),
+    new User('User 2', 'user2@test.com'),
+    new User('User 3', 'user3@test.com'),
+  ];
 
   constructor(private loggingService: LoggingService) {}
 
-  ngOnInit(): void {
-    this.addUser('User 1', 'user1@test.com');
-    this.addUser('User 2', 'user2@test.com');
-    this.addUser('User 3', 'user3@test.com');
-  }
+  ngOnInit(): void {}
 
   getUsers() {
     return this.users;

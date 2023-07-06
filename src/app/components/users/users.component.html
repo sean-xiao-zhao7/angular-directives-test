@@ -1,8 +1,9 @@
-<p>users works!</p>
-<button (click)="goHome()">Go Home</button>
-<ul>
-  <li *ngFor="let user of users">
-    <app-user [name]="user.getName()"></app-user>
-  </li>
-</ul>
-<router-outlet></router-outlet>
+<div>
+  <button (click)="goHome()">Go Home</button>
+  <ul>
+    <li *ngFor="let user of users">
+      <app-user [name]="user.getName()"></app-user>
+    </li>
+  </ul>
+  <router-outlet></router-outlet>
+</div>
