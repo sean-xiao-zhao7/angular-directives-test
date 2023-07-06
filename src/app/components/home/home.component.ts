@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -8,5 +9,9 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   title = 'Home';
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // interval(1000).subscribe((count) => {
+    //   // console.log(count);
+    // });
+  }
 }
