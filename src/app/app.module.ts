@@ -31,7 +31,7 @@ const routes: Routes = appRoutes;
     NotFoundComponent,
     ErrorPageComponent,
   ],
-  imports: [BrowserModule, RouterModule.forRoot(routes)],
+  imports: [BrowserModule, RouterModule.forRoot(routes, { useHash: true })],
   providers: [
     UsersService,
     LoggingService,
