@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { User } from 'src/app/models/user';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -8,6 +9,8 @@ import { UsersService } from 'src/app/services/users.service';
   styleUrls: ['./users.component.css'],
 })
 export class UsersComponent implements OnInit {
+  users: User[] = [];
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
