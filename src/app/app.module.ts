@@ -14,6 +14,7 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
+import { UserResolverService } from './services/user-resolver.service';
 
 const routes: Routes = appRoutes;
 
@@ -31,7 +32,12 @@ const routes: Routes = appRoutes;
     ErrorPageComponent,
   ],
   imports: [BrowserModule, RouterModule.forRoot(routes)],
-  providers: [UsersService, LoggingService, EditUserComponent],
+  providers: [
+    UsersService,
+    LoggingService,
+    EditUserComponent,
+    UserResolverService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

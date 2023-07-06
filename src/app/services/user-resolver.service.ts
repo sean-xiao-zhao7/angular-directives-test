@@ -22,6 +22,6 @@ export class UserResolverService
     | { name: string; email: string }
     | Observable<{ name: string; email: string }>
     | Promise<{ name: string; email: string }> {
-    return this.usersService.getUser(route.params['name']);
+    return this.usersService.getUser(route.params['userId']);
   }
 }
