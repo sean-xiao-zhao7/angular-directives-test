@@ -17,7 +17,7 @@ export class UserComponent implements OnInit {
     this.router.navigate([name], { relativeTo: this.route });
   }
 
-  editUser(userId: string) {
+  editUser(name: string) {
     this.router.navigate([name, 'edit'], {
       relativeTo: this.route,
       queryParams: { time: new Date().toLocaleDateString() },

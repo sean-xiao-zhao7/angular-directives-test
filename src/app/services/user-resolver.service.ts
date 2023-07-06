@@ -18,6 +18,6 @@ export class UserResolverService implements Resolve<User> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): User | Observable<User> | Promise<User> {
-    return this.usersService.getUser(route.params['userId']);
+    return this.usersService.getUser(route.params['name']);
   }
 }
