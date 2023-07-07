@@ -9,10 +9,10 @@ import { map, filter } from 'rxjs/operators';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   title = 'Home';
-  myObs: any;
+  myObsSub: any;
 
   ngOnInit(): void {
-    this.myObs = Observable.create((observer: any) => {
+    const myObs = Observable.create((observer: any) => {
       let count = 0;
       setInterval(() => {
         if (count + 1 > 3) {
@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       }, 1000);
     });
 
-    this.myObs
+    this.myObsSub = myObs
       .pipe(
         filter((data: number) => {
           return (data + 1) % 2 != 0;
@@ -48,6 +48,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.myObs.unsubscribe();
+    this.myObsSub.unsubscribe();
   }
 }
