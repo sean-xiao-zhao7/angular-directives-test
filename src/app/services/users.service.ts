@@ -1,4 +1,6 @@
 import { Injectable, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+
 import { LoggingService } from './logging.service';
 import { User } from '../models/user';
 
@@ -12,6 +14,7 @@ export class UsersService implements OnInit {
     new User('User 2', 'user2@test.com'),
     new User('User 3', 'user3@test.com'),
   ];
+  alertSubject = new Subject<string>();
 
   constructor(private loggingService: LoggingService) {}
 

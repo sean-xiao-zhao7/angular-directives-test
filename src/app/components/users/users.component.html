@@ -1,5 +1,6 @@
 <div>
   <button (click)="goHome()">Go Home</button>
+  <div>Child alerted!</div>
   <ul>
     <li *ngFor="let user of users">
       <app-user [name]="user.getName()"></app-user>

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-user',
@@ -9,7 +10,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class UserComponent implements OnInit {
   @Input() name: string = '';
 
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private usersService: UsersService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -23,5 +28,9 @@ export class UserComponent implements OnInit {
       queryParams: { time: new Date().toLocaleDateString() },
       fragment: 'test',
     });
+  }
+
+  alertParent(name: string) {
+    this.usersService.alertSubject.next(name);
   }
 }
