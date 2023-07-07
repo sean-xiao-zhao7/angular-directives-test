@@ -25,23 +25,23 @@ export class HomeComponent implements OnInit, OnDestroy {
       }, 1000);
     });
 
-    this.myObs.pipe(
-      map((data: number) => {
-        return `Round ${data + 1}`;
-      })
-    );
-
-    this.myObs.subscribe(
-      (count: any) => {
-        console.log(count);
-      },
-      (error: any) => {
-        console.log(error.message);
-      },
-      () => {
-        console.log('Completed.');
-      }
-    );
+    this.myObs
+      .pipe(
+        map((data: number) => {
+          return `Round ${data + 1}`;
+        })
+      )
+      .subscribe(
+        (count: any) => {
+          console.log(count);
+        },
+        (error: any) => {
+          console.log(error.message);
+        },
+        () => {
+          console.log('Completed.');
+        }
+      );
   }
 
   ngOnDestroy(): void {
