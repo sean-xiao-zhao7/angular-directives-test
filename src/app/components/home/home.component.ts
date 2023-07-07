@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   title = 'Home';
   myObs: any;
 
@@ -14,13 +14,21 @@ export class HomeComponent implements OnInit {
     this.myObs = Observable.create((observer: any) => {
       let count = 0;
       setInterval(() => {
-        observer.next(count);
-        count++;
+        if (count > 3) {
+          observer.error(new Error('Greater than 3!'));
+        } else {
+          observer.next(count);
+          count++;
+        }
       }, 1000);
     });
 
     this.myObs.subscribe((count: any) => {
       console.log(count);
     });
+  }
+
+  ngOnDestroy(): void {
+    this.myObs.unsubscribe();
   }
 }
