@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.myObs = Observable.create((observer: any) => {
       let count = 0;
       setInterval(() => {
-        if (count > 3) {
+        if (count + 1 > 3) {
           // observer.error(new Error('Greater than 3!'));
           observer.complete();
         } else {
@@ -27,6 +27,9 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     this.myObs
       .pipe(
+        filter((data: number) => {
+          return (data + 1) % 2 != 0;
+        }),
         map((data: number) => {
           return `Round ${data + 1}`;
         })
