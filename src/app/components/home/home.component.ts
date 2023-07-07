@@ -8,15 +8,19 @@ import { Observable } from 'rxjs';
 })
 export class HomeComponent implements OnInit {
   title = 'Home';
-  myObs: Observable;
+  myObs: any;
 
   ngOnInit(): void {
-    this.myObs = Observable.create((observer) => {
+    this.myObs = Observable.create((observer: any) => {
       let count = 0;
       setInterval(() => {
         observer.next(count);
         count++;
       }, 1000);
+    });
+
+    this.myObs.subscribe((count: any) => {
+      console.log(count);
     });
   }
 }
