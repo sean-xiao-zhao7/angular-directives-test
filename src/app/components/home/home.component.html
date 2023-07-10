@@ -12,7 +12,17 @@
     </div>
     <div>
       <label for="password">Password</label>
-      <input name="password" id="password" type="password" ngModel required />
+      <input
+        name="password"
+        id="password"
+        type="password"
+        ngModel
+        required
+        #passwordInput="ngModel"
+      />
+      <span *ngIf="passwordInput.value && passwordInput.value.length < 6"
+        >Password must be at least 6 chars.</span
+      >
     </div>
     <button type="submit" [disabled]="!form.valid">Submit</button>
   </form>
