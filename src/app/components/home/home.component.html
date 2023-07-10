@@ -8,7 +8,12 @@
   <form (ngSubmit)="onSubmit()" #form="ngForm">
     <div>
       <label for="username">Username</label>
-      <input name="username" id="username" ngModel required />
+      <input
+        name="username"
+        id="username"
+        [ngModel]="defaultUsername"
+        required
+      />
     </div>
     <div>
       <label for="password">Password</label>
