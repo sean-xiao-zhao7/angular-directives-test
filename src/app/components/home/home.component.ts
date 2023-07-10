@@ -54,6 +54,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    console.log(this.myForm.value);
+    console.log(this.myForm.controls);
   }
 }
