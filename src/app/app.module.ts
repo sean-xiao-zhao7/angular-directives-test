@@ -15,6 +15,7 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 import { UserResolverService } from './services/user-resolver.service';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = appRoutes;
 
@@ -31,7 +32,11 @@ const routes: Routes = appRoutes;
     NotFoundComponent,
     ErrorPageComponent,
   ],
-  imports: [BrowserModule, RouterModule.forRoot(routes, { useHash: true })],
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot(routes, { useHash: true }),
+    FormsModule,
+  ],
   providers: [
     UsersService,
     LoggingService,

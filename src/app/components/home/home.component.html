@@ -5,14 +5,14 @@
     <p *ngSwitchCase="'fly'">Title</p>
     <p *ngSwitchDefault>Default</p>
   </div>
-  <form>
+  <form (ngSubmit)="onSubmit(form)" #form="ngForm">
     <div>
       <label for="username">Username</label>
-      <input name="username" id="username" />
+      <input name="username" id="username" ngModel />
     </div>
     <div>
       <label for="password">Password</label>
-      <input name="password" id="password" type="password" />
+      <input name="password" id="password" type="password" ngModel />
     </div>
     <button type="submit">Submit</button>
   </form>
