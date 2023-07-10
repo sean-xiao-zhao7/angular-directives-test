@@ -5,7 +5,7 @@
     <p *ngSwitchCase="'fly'">Title</p>
     <p *ngSwitchDefault>Default</p>
   </div>
-  <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+  <form (ngSubmit)="onSubmit()" #form="ngForm">
     <div>
       <label for="username">Username</label>
       <input name="username" id="username" ngModel />

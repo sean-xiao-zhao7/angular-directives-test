@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
@@ -11,6 +11,7 @@ import { map, filter } from 'rxjs/operators';
 export class HomeComponent implements OnInit, OnDestroy {
   title = 'Home';
   myObsSub: any;
+  @ViewChild('form') myForm!: NgForm;
 
   ngOnInit(): void {
     const myObs = Observable.create((observer: any) => {
@@ -52,7 +53,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.myObsSub.unsubscribe();
   }
 
-  onSubmit(form: NgForm) {
-    console.log(form.value);
+  onSubmit() {
+    console.log(this.myForm.value);
   }
 }
