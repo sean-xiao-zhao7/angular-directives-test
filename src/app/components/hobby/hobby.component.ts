@@ -10,6 +10,7 @@ import { Hobby } from 'src/app/models/hobby';
 export class HobbyComponent implements OnInit {
   form!: FormGroup;
   types: string[] = ['fun', 'learn', 'train', 'maintain', 'expand'];
+  hobby!: Hobby;
 
   constructor() {}
 
@@ -23,7 +24,7 @@ export class HobbyComponent implements OnInit {
     console.log(this.form);
   }
 
-  addHobby() {
-    new Hobby('', '', '', '');
+  onSubmit() {
+    this.hobby = new Hobby('', '', '', '');
   }
 }
