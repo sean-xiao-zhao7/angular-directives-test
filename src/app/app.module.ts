@@ -16,6 +16,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 import { UserResolverService } from './services/user-resolver.service';
 import { FormsModule } from '@angular/forms';
+import { HobbyComponent } from './components/hobby/hobby.component';
 
 const routes: Routes = appRoutes;
 
@@ -31,6 +32,7 @@ const routes: Routes = appRoutes;
     EditUserComponent,
     NotFoundComponent,
     ErrorPageComponent,
+    HobbyComponent,
   ],
   imports: [
     BrowserModule,

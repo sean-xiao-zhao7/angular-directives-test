@@ -1,5 +1,6 @@
 import { EditUserComponent } from '../components/edit-user/edit-user.component';
 import { ErrorPageComponent } from '../components/error-page/error-page.component';
+import { HobbyComponent } from '../components/hobby/hobby.component';
 import { HomeComponent } from '../components/home/home.component';
 import { UserDetailsComponent } from '../components/user-details/user-details.component';
 import { UsersComponent } from '../components/users/users.component';
@@ -27,6 +28,10 @@ export const appRoutes = [
         canDeactivate: [EditUserCanDeactivateService],
       },
     ],
+  },
+  {
+    path: 'hobby',
+    component: HobbyComponent,
   },
   {
     path: 'not-found',
