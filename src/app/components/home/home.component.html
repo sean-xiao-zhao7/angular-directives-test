@@ -43,6 +43,18 @@
       ></textarea>
       <p *ngIf="description">{{ description }}</p>
     </div>
+    <div>
+      <span *ngFor="let hobby of hobbies">
+        <label for="hobby">{{ hobby }}</label>
+        <input
+          type="radio"
+          name="hobby"
+          [value]="hobby"
+          required
+          ngModel="Biking"
+        />
+      </span>
+    </div>
     <button type="submit" [disabled]="!form.valid">Submit</button>
   </form>
 </div>

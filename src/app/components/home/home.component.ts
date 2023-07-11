@@ -12,8 +12,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   title = 'Home';
   myObsSub: any;
   @ViewChild('form') myForm!: NgForm;
+
+  // field values
   defaultUsername: string = 'Test';
   description: string = '';
+  hobbies: string[] = ['Biking', 'Hiking', 'Swimming'];
 
   ngOnInit(): void {
     const myObs = Observable.create((observer: any) => {
