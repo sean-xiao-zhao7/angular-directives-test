@@ -3,6 +3,9 @@
     <label>Name</label>
     <input formControlName="name" type="text" name="name" id="name" />
   </div>
+  <span *ngIf="form.controls.name.invalid && form.controls.name.touched"
+    >Username invalid.</span
+  >
   <div class="form-group">
     <label>Desc.</label>
     <input
