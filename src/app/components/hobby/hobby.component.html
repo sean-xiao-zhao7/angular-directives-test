@@ -37,9 +37,12 @@
     <button (click)="onAddSocial()" type="button">Add</button>
   </div>
   <div *ngIf="form.controls.social.value.length > 0" formArrayName="social">
-    <div *ngFor="let control of getSocialControls()" class="form-group">
+    <div
+      *ngFor="let control of getSocialControls(); let i = index"
+      class="form-group"
+    >
       <label for="control.value">{{ control.value | titlecase }}</label>
-      <input type="text" name="control.value" id="control.value" />
+      <input type="text" [formControlName]="i" id="control.value" />
     </div>
   </div>
   <button [disabled]="form.invalid" type="submit">Submit</button>
