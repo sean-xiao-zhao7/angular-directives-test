@@ -10,6 +10,7 @@ import { map, filter } from 'rxjs/operators';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   title = 'Home';
+  submitted: boolean = false;
   myObsSub: any;
   @ViewChild('form') myForm!: NgForm;
 
@@ -60,9 +61,11 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     console.log(this.myForm.controls);
+    this.submitted = true;
   }
 
-  suggestName() {
+  suggestName(event: any) {
+    event.preventDefault();
     this.myForm.form.patchValue({
       user: {
         username: 'Suggested name',

@@ -15,7 +15,7 @@
           [ngModel]="defaultUsername"
           required
         />
-        <span><button (click)="suggestName()">Suggest name</button></span>
+        <span><button (click)="suggestName($event)">Suggest name</button></span>
       </div>
       <div>
         <label for="password">Password</label>
@@ -58,4 +58,11 @@
     </div>
     <button type="submit" [disabled]="!form.valid">Submit</button>
   </form>
+  <div *ngIf="submitted">
+    <h3>Result</h3>
+    <div>
+      {{ myForm.value.user.username }}, {{ myForm.value.hobby }},
+      {{ myForm.value.description }}.
+    </div>
+  </div>
 </div>
