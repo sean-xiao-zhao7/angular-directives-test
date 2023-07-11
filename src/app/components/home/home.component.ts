@@ -61,4 +61,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   onSubmit() {
     console.log(this.myForm.controls);
   }
+
+  suggestName() {
+    this.myForm.form.patchValue({
+      user: {
+        username: 'Suggested name',
+      },
+    });
+  }
 }
