@@ -35,5 +35,12 @@ export class HobbyComponent implements OnInit {
     alert('Submitted!');
   }
 
-  onAddSocial() {}
+  onAddSocial() {
+    const socialTextControl = new FormControl('');
+    (<FormArray>this.form.get('social')).push(socialTextControl);
+  }
+
+  getSocialControls() {
+    return (<FormArray>this.form.get('social')).controls;
+  }
 }
