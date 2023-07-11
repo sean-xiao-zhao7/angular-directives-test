@@ -36,9 +36,9 @@
         cols="30"
         rows="10"
         required
-        [ngModel]="description"
+        [(ngModel)]="description"
       ></textarea>
-      <p *ngIf="description"></p>
+      <p *ngIf="description">{{ description }}</p>
     </div>
     <button type="submit" [disabled]="!form.valid">Submit</button>
   </form>
