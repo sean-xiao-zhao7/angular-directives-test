@@ -19,12 +19,18 @@ export class HobbyComponent implements OnInit {
       name: new FormControl(''),
       description: new FormControl(''),
       imageUrl: new FormControl(''),
-      type: new FormControl(''),
+      type: new FormControl(this.types[0]),
     });
-    console.log(this.form);
   }
 
   onSubmit() {
-    this.hobby = new Hobby('', '', '', '');
+    this.hobby = new Hobby(
+      this.form.value.name,
+      this.form.value.description,
+      this.form.value.imageUrl,
+      this.form.value.type
+    );
+    this.form.reset();
+    alert('Submitted!');
   }
 }
