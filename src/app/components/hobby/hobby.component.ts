@@ -9,6 +9,7 @@ import { Hobby } from 'src/app/models/hobby';
 })
 export class HobbyComponent implements OnInit {
   form!: FormGroup;
+  types: string[] = ['fun', 'learn', 'train', 'maintain', 'expand'];
 
   constructor() {}
 
@@ -19,6 +20,7 @@ export class HobbyComponent implements OnInit {
       imageUrl: new FormControl(''),
       type: new FormControl(''),
     });
+    console.log(this.form);
   }
 
   addHobby() {

@@ -1,1 +1,33 @@
-<form></form>
+<form [formGroup]="form">
+  <div>
+    <label>Name</label>
+    <input formControlName="name" type="text" name="name" id="name" />
+  </div>
+  <div>
+    <label>Desc.</label>
+    <input
+      formControlName="description"
+      type="text"
+      name="description"
+      id="description"
+    />
+  </div>
+  <div>
+    <label>Image URL</label>
+    <input
+      formControlName="imageUrl"
+      type="text"
+      name="imageUrl"
+      id="imageUrl"
+    />
+  </div>
+  <div>
+    <label>Type</label>
+    <select formControlName="type" name="type" id="type">
+      <option value="type" *ngFor="let type of types">
+        {{ type | titlecase }}
+      </option>
+    </select>
+  </div>
+  <button>Submit</button>
+</form>

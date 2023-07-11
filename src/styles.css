@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+form {
+  margin: 2rem;
+  padding: 2.5rem;
+  border: 1px solid rgb(233, 233, 233);
+  background-color: rgba(237, 246, 247, 0.476);
+  border-radius: 15px;
+
+  display: grid;
+  grid-row-gap: 1rem;
+}
