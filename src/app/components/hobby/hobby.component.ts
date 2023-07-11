@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Hobby } from 'src/app/models/hobby';
 
 @Component({
@@ -7,9 +8,18 @@ import { Hobby } from 'src/app/models/hobby';
   styleUrls: ['./hobby.component.css'],
 })
 export class HobbyComponent implements OnInit {
+  form!: FormGroup;
+
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.form = new FormGroup({
+      name: new FormControl(''),
+      description: new FormControl(''),
+      imageUrl: new FormControl(''),
+      type: new FormControl(''),
+    });
+  }
 
   addHobby() {
     new Hobby('', '', '', '');
