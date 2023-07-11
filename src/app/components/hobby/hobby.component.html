@@ -32,5 +32,10 @@
       </option>
     </select>
   </div>
-  <button [disabled]="form.invalid">Submit</button>
+  <div class="form-group">
+    <label>Social media</label>
+    <div *ngIf="form.controls.social.value.length > 0"></div>
+    <button (click)="onAddSocial()" type="button">Add</button>
+  </div>
+  <button [disabled]="form.invalid" type="submit">Submit</button>
 </form>

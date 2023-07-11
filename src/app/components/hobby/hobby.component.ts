@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Hobby } from 'src/app/models/hobby';
 
 @Component({
@@ -20,6 +20,7 @@ export class HobbyComponent implements OnInit {
       description: new FormControl('', Validators.required),
       imageUrl: new FormControl('', Validators.required),
       type: new FormControl(this.types[0], Validators.required),
+      social: new FormArray([]),
     });
   }
 
@@ -33,4 +34,6 @@ export class HobbyComponent implements OnInit {
     this.form.reset();
     alert('Submitted!');
   }
+
+  onAddSocial() {}
 }
