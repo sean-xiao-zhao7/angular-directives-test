@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Hobby } from 'src/app/models/hobby';
 
 @Component({
@@ -16,10 +16,10 @@ export class HobbyComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      name: new FormControl(''),
-      description: new FormControl(''),
-      imageUrl: new FormControl(''),
-      type: new FormControl(this.types[0]),
+      name: new FormControl('', Validators.required),
+      description: new FormControl('', Validators.required),
+      imageUrl: new FormControl('', Validators.required),
+      type: new FormControl(this.types[0], Validators.required),
     });
   }
 
