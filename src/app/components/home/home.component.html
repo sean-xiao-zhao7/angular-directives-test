@@ -6,28 +6,31 @@
     <p *ngSwitchDefault>Default</p>
   </div>
   <form (ngSubmit)="onSubmit()" #form="ngForm">
-    <div>
-      <label for="username">Username</label>
-      <input
-        name="username"
-        id="username"
-        [ngModel]="defaultUsername"
-        required
-      />
-    </div>
-    <div>
-      <label for="password">Password</label>
-      <input
-        name="password"
-        id="password"
-        type="password"
-        ngModel
-        required
-        #passwordInput="ngModel"
-      />
-      <span *ngIf="passwordInput.value && passwordInput.value.length < 6"
-        >Password must be at least 6 chars.</span
-      >
+    <div ngModelGroup="user" #user="ngModelGroup">
+      <div>
+        <label for="username">Username</label>
+        <input
+          name="username"
+          id="username"
+          [ngModel]="defaultUsername"
+          required
+        />
+      </div>
+      <div>
+        <label for="password">Password</label>
+        <input
+          name="password"
+          id="password"
+          type="password"
+          ngModel
+          required
+          #passwordInput="ngModel"
+        />
+        <span *ngIf="passwordInput.value && passwordInput.value.length < 6"
+          >Password must be at least 6 chars.</span
+        >
+      </div>
+      <p *ngIf="user.invalid && user.touched">User data invalid.</p>
     </div>
     <div>
       <textarea
