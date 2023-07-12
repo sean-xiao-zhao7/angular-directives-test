@@ -11,12 +11,16 @@ export class HobbyComponent implements OnInit {
   form!: FormGroup;
   types: string[] = ['fun', 'learn', 'train', 'maintain', 'expand'];
   hobbies: Hobby[] = [];
+  badHobbies: string[] = ['1', '2'];
 
   constructor() {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      name: new FormControl('', Validators.required),
+      name: new FormControl('', [
+        Validators.required,
+        this.badHobbyValidator.bind(this),
+      ]),
       description: new FormControl('', Validators.required),
       imageUrl: new FormControl('', Validators.required),
       type: new FormControl(this.types[0], Validators.required),
@@ -45,5 +49,13 @@ export class HobbyComponent implements OnInit {
 
   getSocialControls() {
     return (<FormArray>this.form.get('social')).controls;
+  }
+
+  badHobbyValidator(control: FormControl): { [s: string]: boolean } | null {
+    if (this.badHobbies.indexOf(control.value) >= 0) {
+      return { badHobby: true };
+    } else {
+      return null;
+    }
   }
 }
