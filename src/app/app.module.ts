@@ -17,6 +17,7 @@ import { ErrorPageComponent } from './components/error-page/error-page.component
 import { UserResolverService } from './services/user-resolver.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HobbyComponent } from './components/hobby/hobby.component';
+import { ShortenPipe } from './pipes/shorten.pipe';
 
 const routes: Routes = appRoutes;
 
@@ -33,6 +34,7 @@ const routes: Routes = appRoutes;
     NotFoundComponent,
     ErrorPageComponent,
     HobbyComponent,
+    ShortenPipe,
   ],
   imports: [
     BrowserModule,
