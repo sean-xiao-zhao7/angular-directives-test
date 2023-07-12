@@ -41,7 +41,7 @@
       *ngFor="let control of getSocialControls(); let i = index"
       class="form-group"
     >
-      <label for="control.value">{{ control.value | titlecase }}</label>
+      <div></div>
       <input type="text" [formControlName]="i" id="control.value" />
     </div>
   </div>
@@ -54,5 +54,9 @@
     <p>{{ hobby.description }}</p>
     <p>{{ hobby.imageUrl }}</p>
     <p>{{ hobby.type }}</p>
+    <p>Social media</p>
+    <p *ngFor="let social of hobby.social">
+      {{ social }}
+    </p>
   </div>
 </div>
