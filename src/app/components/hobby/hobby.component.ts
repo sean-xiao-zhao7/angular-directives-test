@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  AsyncValidatorFn,
+  FormArray,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Hobby } from 'src/app/models/hobby';
 
@@ -12,16 +18,17 @@ export class HobbyComponent implements OnInit {
   form!: FormGroup;
   types: string[] = ['fun', 'learn', 'train', 'maintain', 'expand'];
   hobbies: Hobby[] = [];
-  badHobbies: string[] = ['1', '2'];
+  badHobbies: string[] = ['4', '3'];
 
   constructor() {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      name: new FormControl('', [
-        Validators.required,
-        this.badHobbyValidator.bind(this),
-      ]),
+      name: new FormControl(
+        '',
+        [Validators.required],
+        <AsyncValidatorFn>this.usernameDupValidatorAsync.bind(this)
+      ),
       description: new FormControl('', Validators.required),
       imageUrl: new FormControl('', Validators.required),
       type: new FormControl(this.types[0], Validators.required),
