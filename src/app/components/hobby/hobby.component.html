@@ -47,3 +47,11 @@
   </div>
   <button [disabled]="form.invalid" type="submit">Submit</button>
 </form>
+<div class="container" *ngIf="hobbies.length > 0">
+  <div *ngFor="let hobby of hobbies">
+    <h3>{{ hobby.name }}</h3>
+    <p>{{ hobby.description }}</p>
+    <p>{{ hobby.imageUrl }}</p>
+    <p>{{ hobby.type }}</p>
+  </div>
+</div>

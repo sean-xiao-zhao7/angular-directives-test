@@ -10,7 +10,7 @@ import { Hobby } from 'src/app/models/hobby';
 export class HobbyComponent implements OnInit {
   form!: FormGroup;
   types: string[] = ['fun', 'learn', 'train', 'maintain', 'expand'];
-  hobby!: Hobby;
+  hobbies: Hobby[] = [];
 
   constructor() {}
 
@@ -25,11 +25,14 @@ export class HobbyComponent implements OnInit {
   }
 
   onSubmit() {
-    this.hobby = new Hobby(
-      this.form.value.name,
-      this.form.value.description,
-      this.form.value.imageUrl,
-      this.form.value.type
+    this.hobbies.push(
+      new Hobby(
+        this.form.value.name,
+        this.form.value.description,
+        this.form.value.imageUrl,
+        this.form.value.type,
+        this.form.value.social
+      )
     );
     this.form.reset();
     alert('Submitted!');
