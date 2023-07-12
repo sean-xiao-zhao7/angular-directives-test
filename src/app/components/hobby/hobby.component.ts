@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { Hobby } from 'src/app/models/hobby';
 
 @Component({
@@ -57,5 +58,19 @@ export class HobbyComponent implements OnInit {
     } else {
       return null;
     }
+  }
+
+  usernameDupValidatorAsync(
+    control: FormControl
+  ):
+    | Promise<{ [s: string]: boolean } | null>
+    | Observable<{ [s: string]: boolean } | null> {
+    return new Promise<{ [s: string]: boolean } | null>((resolve, reject) => {
+      if (this.badHobbies.indexOf(control.value) >= 0) {
+        resolve({ badHobby: true });
+      } else {
+        resolve(null);
+      }
+    });
   }
 }
