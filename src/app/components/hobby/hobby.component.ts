@@ -11,6 +11,7 @@ import { HttpClient } from '@angular/common/http';
 import { Hobby } from 'src/app/models/hobby';
 
 import { vals } from '../../../vals';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-hobby',
@@ -39,19 +40,29 @@ export class HobbyComponent implements OnInit {
     });
 
     // get data
-    this.httpClient.get(vals.root).subscribe((data: any) => {
-      for (const key in data) {
-        this.hobbies.push(
-          new Hobby(
-            data[key].name,
-            data[key].description,
-            data[key].imageUrl,
-            data[key].type,
-            data[key].social
-          )
-        );
-      }
-    });
+    this.httpClient
+      .get(vals.root)
+      .pipe(
+        map((data: any) => {
+          const hobbies = [];
+          for (const key in data) {
+            hobbies.push(
+              new Hobby(
+                data[key].name,
+                data[key].description,
+                data[key].imageUrl,
+                data[key].type,
+                data[key].social,
+                key
+              )
+            );
+          }
+          return hobbies;
+        })
+      )
+      .subscribe((data: any) => {
+        this.hobbies = data;
+      });
   }
 
   onSubmit() {
@@ -65,7 +76,9 @@ export class HobbyComponent implements OnInit {
     this.hobbies.push(newHobby);
     this.form.reset();
     alert('Submitted!');
-    this.httpClient.post(vals.root, newHobby).subscribe((data) => {});
+    this.httpClient.post(vals.root, newHobby).subscribe((data: any) => {
+      newHobby.fid = data.name;
+    });
   }
 
   onAddSocial() {
