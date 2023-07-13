@@ -19,6 +19,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   description: string = '';
   hobbyFilter: string = '';
   hobbies: string[] = ['Biking', 'Hiking', 'Swimming'];
+  status: Promise<string> = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('online');
+    }, 2000);
+  });
 
   ngOnInit(): void {
     const myObs = Observable.create((observer: any) => {
