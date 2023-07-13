@@ -6,12 +6,13 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Hobby } from 'src/app/models/hobby';
 
+import { Hobby } from 'src/app/models/hobby';
+import { HobbyObject } from 'src/app/interfaces/hobby';
 import { vals } from '../../../vals';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-hobby',
@@ -60,7 +61,7 @@ export class HobbyComponent implements OnInit {
           return hobbies;
         })
       )
-      .subscribe((data: any) => {
+      .subscribe((data: Hobby[]) => {
         this.hobbies = data;
       });
   }
