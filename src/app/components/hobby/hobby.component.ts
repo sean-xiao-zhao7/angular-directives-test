@@ -7,7 +7,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { Hobby } from 'src/app/models/hobby';
+
+import { vals } from '../../../vals';
 
 @Component({
   selector: 'app-hobby',
@@ -20,7 +23,7 @@ export class HobbyComponent implements OnInit {
   hobbies: Hobby[] = [];
   badHobbies: string[] = ['4', '3'];
 
-  constructor() {}
+  constructor(private httpClient: HttpClient) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -37,17 +40,17 @@ export class HobbyComponent implements OnInit {
   }
 
   onSubmit() {
-    this.hobbies.push(
-      new Hobby(
-        this.form.value.name,
-        this.form.value.description,
-        this.form.value.imageUrl,
-        this.form.value.type,
-        this.form.value.social
-      )
+    const newHobby = new Hobby(
+      this.form.value.name,
+      this.form.value.description,
+      this.form.value.imageUrl,
+      this.form.value.type,
+      this.form.value.social
     );
+    this.hobbies.push(newHobby);
     this.form.reset();
     alert('Submitted!');
+    this.httpClient.post(vals.root, newHobby);
   }
 
   onAddSocial() {
