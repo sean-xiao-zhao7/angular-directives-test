@@ -19,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HobbyComponent } from './components/hobby/hobby.component';
 import { ShortenPipe } from './pipes/shorten.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = appRoutes;
 
@@ -43,6 +44,7 @@ const routes: Routes = appRoutes;
     RouterModule.forRoot(routes, { useHash: true }),
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [
     UsersService,
