@@ -77,7 +77,7 @@ export class HobbyComponent implements OnInit {
     this.hobbies.push(newHobby);
     this.form.reset();
     alert('Submitted!');
-    this.httpClient.post(vals.root, newHobby).subscribe((data: any) => {
+    this.httpClient.post<Hobby>(vals.root, newHobby).subscribe((data: any) => {
       newHobby.fid = data.name;
     });
   }
