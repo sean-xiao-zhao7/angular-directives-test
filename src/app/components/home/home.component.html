@@ -63,7 +63,7 @@
     <h3>Result</h3>
     <div>
       {{ myForm.value.user.username }}, {{ myForm.value.hobby }},
-      {{ myForm.value.description | shorten }}.
+      {{ myForm.value.description | shorten : 10 }}.
     </div>
   </div>
 </div>
