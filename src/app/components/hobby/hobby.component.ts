@@ -37,6 +37,21 @@ export class HobbyComponent implements OnInit {
       type: new FormControl(this.types[0], Validators.required),
       social: new FormArray([]),
     });
+
+    // get data
+    this.httpClient.get(vals.root).subscribe((data: any) => {
+      for (const key in data) {
+        this.hobbies.push(
+          new Hobby(
+            data[key].name,
+            data[key].description,
+            data[key].imageUrl,
+            data[key].type,
+            data[key].social
+          )
+        );
+      }
+    });
   }
 
   onSubmit() {
