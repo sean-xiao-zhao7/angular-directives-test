@@ -50,7 +50,7 @@ export class HobbyComponent implements OnInit {
     this.hobbies.push(newHobby);
     this.form.reset();
     alert('Submitted!');
-    this.httpClient.post(vals.root, newHobby);
+    this.httpClient.post(vals.root, newHobby).subscribe((data) => {});
   }
 
   onAddSocial() {
