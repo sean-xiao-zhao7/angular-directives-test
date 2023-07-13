@@ -42,9 +42,9 @@ export class HobbyComponent implements OnInit {
 
     // get data
     this.httpClient
-      .get(vals.root)
+      .get<{ [key: string]: HobbyObject }>(vals.root)
       .pipe(
-        map((data: any) => {
+        map((data: { [key: string]: HobbyObject }) => {
           const hobbies = [];
           for (const key in data) {
             hobbies.push(
