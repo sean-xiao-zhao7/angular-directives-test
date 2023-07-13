@@ -18,6 +18,7 @@ import { UserResolverService } from './services/user-resolver.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HobbyComponent } from './components/hobby/hobby.component';
 import { ShortenPipe } from './pipes/shorten.pipe';
+import { FilterPipe } from './pipes/filter.pipe';
 
 const routes: Routes = appRoutes;
 
@@ -35,6 +36,7 @@ const routes: Routes = appRoutes;
     ErrorPageComponent,
     HobbyComponent,
     ShortenPipe,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,

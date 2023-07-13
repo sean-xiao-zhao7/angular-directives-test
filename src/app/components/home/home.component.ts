@@ -15,8 +15,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   @ViewChild('form') myForm!: NgForm;
 
   // field values
-  defaultUsername: string = 'Test';
+  defaultUsername: string = '';
   description: string = '';
+  hobbyFilter: string = '';
   hobbies: string[] = ['Biking', 'Hiking', 'Swimming'];
 
   ngOnInit(): void {

@@ -46,7 +46,8 @@
       <p *ngIf="description">{{ description }}</p>
     </div>
     <div>
-      <span *ngFor="let hobby of hobbies">
+      <input type="text" name="hobby-filter" [(ngModel)]="hobbyFilter" />
+      <span *ngFor="let hobby of hobbies | filter : hobbyFilter">
         <label for="hobby">{{ hobby }}</label>
         <input
           type="radio"
