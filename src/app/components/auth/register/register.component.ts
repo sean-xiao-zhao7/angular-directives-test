@@ -28,6 +28,6 @@ export class RegisterComponent implements OnInit {
       this.registerForm.value.email
     );
     this.registerForm.reset();
-    this.authService.authenticate(registerUser);
+    this.authService.register(registerUser);
   }
 }
