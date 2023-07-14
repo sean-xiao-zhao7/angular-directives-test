@@ -19,7 +19,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HobbyComponent } from './components/hobby/hobby.component';
 import { ShortenPipe } from './pipes/shorten.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { MyInterceptorService } from './interceptors/my-interceptor.service';
 
 const routes: Routes = appRoutes;
 
@@ -51,6 +52,11 @@ const routes: Routes = appRoutes;
     LoggingService,
     EditUserComponent,
     UserResolverService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MyInterceptorService,
+      multi: false,
+    },
   ],
   bootstrap: [AppComponent],
 })
