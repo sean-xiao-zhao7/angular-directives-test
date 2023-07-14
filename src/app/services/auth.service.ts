@@ -33,12 +33,15 @@ export class AuthService {
       password: registerUser.getPassword(),
       returnSecureToken: true,
     };
-    this.httpClient
-      .post<RegisterPayload>(vals.sa, payload)
-      .subscribe((data: any) => {
+    this.httpClient.post<RegisterPayload>(vals.sa, payload).subscribe(
+      (data: any) => {
         this._authenticated = true;
         this._authenticatedUser = registerUser;
-      });
+      },
+      (error: any) => {
+        alert('Error registering.');
+      }
+    );
   }
 
   getAuthenticationStatus() {

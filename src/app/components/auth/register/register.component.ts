@@ -24,10 +24,9 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
     const registerUser = new User(
       this.registerForm.value.username,
-      this.registerForm.value.password,
-      this.registerForm.value.email
+      this.registerForm.value.email,
+      this.registerForm.value.password
     );
-    this.registerForm.reset();
     this.authService.register(registerUser);
   }
 }
