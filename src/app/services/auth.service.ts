@@ -11,16 +11,18 @@ export class AuthService {
 
   constructor() {}
 
-  authenticate() {
-    this._authenticated = true;
-
+  authenticate(loginUser: User) {
     // this.httpClient.post<Hobby>(vals.root, newHobby).subscribe((data: any) => {
     //   newHobby.fid = data.name;
+    //   this._authenticated = true;
     // });
   }
 
   unauthenticate() {
-    this._authenticated = false;
+    // this.httpClient.post<Hobby>(vals.root, newHobby).subscribe((data: any) => {
+    //   newHobby.fid = data.name;
+    //   this._authenticated = false;
+    // });
   }
 
   getAuthenticationStatus() {
