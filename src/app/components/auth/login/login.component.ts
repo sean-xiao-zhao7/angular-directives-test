@@ -25,8 +25,5 @@ export class LoginComponent implements OnInit {
       this.loginForm.value.password
     );
     this.loginForm.reset();
-    // this.httpClient.post<Hobby>(vals.root, newHobby).subscribe((data: any) => {
-    //   newHobby.fid = data.name;
-    // });
   }
 }
