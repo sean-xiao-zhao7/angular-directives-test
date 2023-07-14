@@ -34,10 +34,10 @@ export class AuthService {
       returnSecureToken: true,
     };
     this.httpClient
-      .post<RegisterPayload>(vals.sa, registerUser)
+      .post<RegisterPayload>(vals.sa, payload)
       .subscribe((data: any) => {
-        newHobby.fid = data.name;
         this._authenticated = true;
+        this._authenticatedUser = registerUser;
       });
   }
 

@@ -23,7 +23,6 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MyInterceptorService } from './interceptors/my-interceptor.service';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
-import { RegisterPayloadComponent } from './interfaces/register-payload/register-payload.component';
 
 const routes: Routes = appRoutes;
 
@@ -44,7 +43,6 @@ const routes: Routes = appRoutes;
     FilterPipe,
     LoginComponent,
     RegisterComponent,
-    RegisterPayloadComponent,
   ],
   imports: [
     BrowserModule,
