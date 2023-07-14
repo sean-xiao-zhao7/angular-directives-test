@@ -1,3 +1,5 @@
+import { LoginComponent } from '../components/auth/login/login.component';
+import { RegisterComponent } from '../components/auth/register/register.component';
 import { EditUserComponent } from '../components/edit-user/edit-user.component';
 import { ErrorPageComponent } from '../components/error-page/error-page.component';
 import { HobbyComponent } from '../components/hobby/hobby.component';
@@ -9,7 +11,7 @@ import { EditUserCanDeactivateService } from '../services/edit-user-can-deactiva
 import { UserResolverService } from '../services/user-resolver.service';
 
 export const appRoutes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent, canActivate: [AuthGuardService] },
   {
     path: 'users',
     component: UsersComponent,
@@ -32,11 +34,20 @@ export const appRoutes = [
   {
     path: 'hobby',
     component: HobbyComponent,
+    canActivate: [AuthGuardService],
   },
   {
     path: 'not-found',
     component: ErrorPageComponent,
     data: { message: 'Page not found. (404)' },
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
   },
   { path: '**', redirectTo: '/not-found' },
 ];

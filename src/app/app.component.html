@@ -1,4 +1,4 @@
-<nav>
+<nav class="authed" *ngIf="authStatus !== ''">
   <a
     routerLink="/"
     routerLinkActive="active"
@@ -16,6 +16,21 @@
     routerLinkActive="active"
     [routerLinkActiveOptions]="{ exact: true }"
     >Hobby</a
+  >
+  <a href="#">Logout</a>
+</nav>
+<nav class="unauthed" *ngIf="authStatus === ''">
+  <a
+    routerLink="/register"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+    >Sign up</a
+  >
+  <a
+    routerLink="/login"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+    >Log in</a
   >
 </nav>
 <router-outlet></router-outlet>

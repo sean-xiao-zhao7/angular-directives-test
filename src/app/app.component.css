@@ -1,7 +1,12 @@
 nav {
   display: grid;
-  grid-template-columns: repeat(3, max-content);
   grid-column-gap: 1rem;
+}
+nav.authed {
+  grid-template-columns: repeat(4, max-content);
+}
+nav.unauthed {
+  grid-template-columns: repeat(2, max-content);
 }
 
 nav > .active {
