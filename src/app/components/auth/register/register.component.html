@@ -1,1 +1,26 @@
-<p>register works!</p>
+<form [formGroup]="registerForm">
+  <h2>Sign up</h2>
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input
+      type="text"
+      name="username"
+      id="username"
+      formControlName="username"
+    />
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input
+      type="password"
+      name="password"
+      id="password"
+      formControlName="password"
+    />
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" formControlName="email" />
+  </div>
+  <button [disabled]="registerForm.invalid" type="submit">Sign up</button>
+</form>
