@@ -55,7 +55,7 @@ const routes: Routes = appRoutes;
     {
       provide: HTTP_INTERCEPTORS,
       useClass: MyInterceptorService,
-      multi: false,
+      multi: true,
     },
   ],
   bootstrap: [AppComponent],
