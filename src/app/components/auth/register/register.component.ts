@@ -27,6 +27,11 @@ export class RegisterComponent implements OnInit {
       this.registerForm.value.email,
       this.registerForm.value.password
     );
-    this.authService.register(registerUser);
+    this.authService.register(registerUser).subscribe(
+      (data: any) => {},
+      (error: any) => {
+        alert('Error registering.');
+      }
+    );
   }
 }
