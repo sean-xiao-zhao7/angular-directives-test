@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user';
 import { vals } from 'src/vals';
-import { AuthRequestPayload } from '../interfaces/register-payload';
+import { AuthRequestPayload } from '../interfaces/auth-request-payload';
+import { AuthResponsePayload } from '../interfaces/auth-response-payload';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 
@@ -30,7 +31,7 @@ export class AuthService {
       password: registerUser.getPassword(),
       returnSecureToken: true,
     };
-    return this.httpClient.post<AuthRequestPayload>(vals.sa, payload).pipe(
+    return this.httpClient.post<AuthResponsePayload>(vals.sa, payload).pipe(
       catchError((error) => {
         let message = 'Server error.';
         if (!error.error || !error.error.error) {
