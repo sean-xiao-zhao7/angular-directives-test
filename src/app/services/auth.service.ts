@@ -4,7 +4,7 @@ import { User } from '../models/user';
 import { vals } from 'src/vals';
 import { AuthRequestPayload } from '../interfaces/auth-request-payload';
 import { AuthResponsePayload } from '../interfaces/auth-response-payload';
-import { catchError } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { BehaviorSubject, throwError } from 'rxjs';
 
 @Injectable({
@@ -73,6 +73,10 @@ export class AuthService {
           }
         }
         return throwError(message);
+      }),
+      tap((response) => {
+        user.setIdToken(response.idToken, response.expiresIn);
+        this._authenticatedUser.next(user);
       })
     );
   }

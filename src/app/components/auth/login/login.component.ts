@@ -30,8 +30,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.loginForm.reset();
     this.sub = this.authService.authenticate(loginUser).subscribe(
       (response) => {
-        // console.log(response);
-        loginUser.setIdToken(response.idToken, response.expiresIn);
+        console.log(response);
       },
       (errorMessage) => {
         alert(errorMessage);
