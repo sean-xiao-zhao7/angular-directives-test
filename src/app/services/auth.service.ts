@@ -38,7 +38,7 @@ export class AuthService {
     return this._authenticatedUser;
   }
 
-  _sendAuthRequestHelper(user: User, targetUrl: string) {
+  private _sendAuthRequestHelper(user: User, targetUrl: string) {
     const payload: AuthRequestPayload = {
       email: user.getEmail(),
       password: user.getPassword(),
@@ -59,6 +59,16 @@ export class AuthService {
               break;
             case 'TOO_MANY_ATTEMPTS_TRY_LATER':
               message = 'Please try later. Too many attempts that failed.';
+              break;
+            case 'EMAIL_NOT_FOUND':
+              message =
+                'Email is not registered with this app. Please register first.';
+              break;
+            case 'INVALID_PASSWORD':
+              message = 'The password is incorrect. Please try again.';
+              break;
+            case 'USER_DISABLED':
+              message = 'Your account has been suspended by the admin.';
               break;
           }
         }
