@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user';
 import { vals } from 'src/vals';
 import { RegisterPayload } from '../interfaces/register-payload';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -33,7 +34,25 @@ export class AuthService {
       password: registerUser.getPassword(),
       returnSecureToken: true,
     };
-    return this.httpClient.post<RegisterPayload>(vals.sa, payload);
+    return this.httpClient.post<RegisterPayload>(vals.sa, payload).pipe(
+      catchError((error) => {
+        let message = 'Server error.';
+        if (!error.error || !error.error.error) {
+          message = 'Network error.';
+        }
+        switch (error.error.error) {
+          case 'EMAIL_EXISTS':
+            message = 'Email already registered. Please use another email.';
+            break;
+          case 'OPERATION_NOT_ALLOWED':
+            message = 'Password sign-in is disabled for this project.';
+            break;
+          case 'TOO_MANY_ATTEMPTS_TRY_LATER':
+            message = 'Please try later. Too many attempts that failed.';
+            break;
+        }
+      })
+    );
   }
 
   getAuthenticationStatus() {

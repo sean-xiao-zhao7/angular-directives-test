@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
@@ -8,8 +8,9 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit, OnDestroy {
   registerForm!: FormGroup;
+  sub: any;
 
   constructor(private authService: AuthService) {}
 
@@ -27,11 +28,16 @@ export class RegisterComponent implements OnInit {
       this.registerForm.value.email,
       this.registerForm.value.password
     );
-    this.authService.register(registerUser).subscribe(
+    this.sub = this.authService.register(registerUser).subscribe(
       (data: any) => {},
       (error: any) => {
         alert('Error registering.');
+        console.log(error.message);
       }
     );
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 }
