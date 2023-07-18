@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
@@ -8,14 +8,15 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   loginForm!: FormGroup;
+  sub: any;
 
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
-      username: new FormControl('', Validators.required),
+      username: new FormControl('test@test.com', Validators.required),
       password: new FormControl('', Validators.required),
     });
   }
@@ -23,9 +24,23 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     const loginUser = new User(
       this.loginForm.value.username,
+      this.loginForm.value.username,
       this.loginForm.value.password
     );
     this.loginForm.reset();
-    this.authService.authenticate(loginUser);
+    this.sub = this.authService.authenticate(loginUser).subscribe(
+      (response) => {
+        console.log(response);
+      },
+      (errorMessage) => {
+        alert(errorMessage);
+      }
+    );
+  }
+
+  ngOnDestroy(): void {
+    if (this.sub) {
+      this.sub.unsubscribe();
+    }
   }
 }
