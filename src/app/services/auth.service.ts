@@ -20,12 +20,7 @@ export class AuthService {
     return this._sendAuthRequestHelper(loginUser, vals.sia);
   }
 
-  unauthenticate() {
-    // this.httpClient.post<Hobby>(vals.root, newHobby).subscribe((data: any) => {
-    //   newHobby.fid = data.name;
-    //   this._authenticated = false;
-    // });
-  }
+  unauthenticate() {}
 
   register(registerUser: User) {
     return this._sendAuthRequestHelper(registerUser, vals.sua);
