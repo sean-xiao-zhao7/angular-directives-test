@@ -5,14 +5,14 @@ import { vals } from 'src/vals';
 import { AuthRequestPayload } from '../interfaces/auth-request-payload';
 import { AuthResponsePayload } from '../interfaces/auth-response-payload';
 import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { BehaviorSubject, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private _authenticated: boolean = false;
-  private _authenticatedUser!: User;
+  private _authenticatedUser: BehaviorSubject<any> = new BehaviorSubject(null);
 
   constructor(private httpClient: HttpClient) {}
 

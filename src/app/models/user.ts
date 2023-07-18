@@ -3,7 +3,7 @@ export class User {
   private email: string;
   private password: string;
   private _idToken!: string;
-  private _expireDatetime!: string;
+  private _expireDatetime!: Date;
 
   constructor(name: string, email: string, password: string = '') {
     this.name = name;
@@ -23,12 +23,15 @@ export class User {
     return this.password;
   }
 
-  get idToken(): string {
+  get idToken(): string | boolean {
+    if (!this._expireDatetime) {
+      return false;
+    }
     return this._idToken;
   }
 
-  setIdToken(idToken: string, expireDatetime: string): void {
+  setIdToken(idToken: string, expiresIn: string): void {
     this._idToken = idToken;
-    this._expireDatetime = expireDatetime;
+    this._expireDatetime = new Date(new Date().getTime() * 1000 + +expiresIn);
   }
 }
