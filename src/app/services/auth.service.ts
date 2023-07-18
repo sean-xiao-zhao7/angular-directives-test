@@ -16,7 +16,9 @@ export class AuthService {
 
   constructor(private httpClient: HttpClient) {}
 
-  authenticate(loginUser: User) {}
+  authenticate(loginUser: User) {
+    this._sendAuthRequestHelper(loginUser, vals.sia);
+  }
 
   unauthenticate() {
     // this.httpClient.post<Hobby>(vals.root, newHobby).subscribe((data: any) => {
@@ -26,12 +28,28 @@ export class AuthService {
   }
 
   register(registerUser: User) {
+    this._sendAuthRequestHelper(registerUser, vals.sua);
+  }
+
+  getAuthenticationStatus() {
+    return new Promise<boolean>((resolve, _) => {
+      setTimeout(() => {
+        resolve(this._authenticated);
+      }, 100);
+    });
+  }
+
+  getAuthedUser() {
+    return this._authenticatedUser;
+  }
+
+  _sendAuthRequestHelper(user: User, targetUrl: string) {
     const payload: AuthRequestPayload = {
-      email: registerUser.getEmail(),
-      password: registerUser.getPassword(),
+      email: user.getEmail(),
+      password: user.getPassword(),
       returnSecureToken: true,
     };
-    return this.httpClient.post<AuthResponsePayload>(vals.sa, payload).pipe(
+    return this.httpClient.post<AuthResponsePayload>(targetUrl, payload).pipe(
       catchError((error) => {
         let message = 'Server error.';
         if (!error.error || !error.error.error) {
@@ -52,17 +70,5 @@ export class AuthService {
         return throwError(message);
       })
     );
-  }
-
-  getAuthenticationStatus() {
-    return new Promise<boolean>((resolve, _) => {
-      setTimeout(() => {
-        resolve(this._authenticated);
-      }, 100);
-    });
-  }
-
-  getAuthedUser() {
-    return this._authenticatedUser;
   }
 }
