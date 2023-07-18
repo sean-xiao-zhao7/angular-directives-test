@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user';
 import { vals } from 'src/vals';
-import { RegisterPayload } from '../interfaces/register-payload';
+import { AuthRequestPayload } from '../interfaces/register-payload';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 
@@ -15,12 +15,7 @@ export class AuthService {
 
   constructor(private httpClient: HttpClient) {}
 
-  authenticate(loginUser: User) {
-    // this.httpClient.post<Hobby>(vals.root, newHobby).subscribe((data: any) => {
-    //   newHobby.fid = data.name;
-    //   this._authenticated = true;
-    // });
-  }
+  authenticate(loginUser: User) {}
 
   unauthenticate() {
     // this.httpClient.post<Hobby>(vals.root, newHobby).subscribe((data: any) => {
@@ -30,12 +25,12 @@ export class AuthService {
   }
 
   register(registerUser: User) {
-    const payload: RegisterPayload = {
+    const payload: AuthRequestPayload = {
       email: registerUser.getEmail(),
       password: registerUser.getPassword(),
       returnSecureToken: true,
     };
-    return this.httpClient.post<RegisterPayload>(vals.sa, payload).pipe(
+    return this.httpClient.post<AuthRequestPayload>(vals.sa, payload).pipe(
       catchError((error) => {
         let message = 'Server error.';
         if (!error.error || !error.error.error) {

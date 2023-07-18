@@ -30,9 +30,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
     );
     this.sub = this.authService.register(registerUser).subscribe(
       (data: any) => {},
-      (error: any) => {
-        alert('Error registering.');
-        console.log(error.message);
+      (errorMessage: any) => {
+        alert(`Error: ${errorMessage}`);
+        console.log(errorMessage);
       }
     );
   }
