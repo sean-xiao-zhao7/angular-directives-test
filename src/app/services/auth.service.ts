@@ -17,7 +17,7 @@ export class AuthService {
   constructor(private httpClient: HttpClient) {}
 
   authenticate(loginUser: User) {
-    this._sendAuthRequestHelper(loginUser, vals.sia);
+    return this._sendAuthRequestHelper(loginUser, vals.sia);
   }
 
   unauthenticate() {
@@ -28,7 +28,7 @@ export class AuthService {
   }
 
   register(registerUser: User) {
-    this._sendAuthRequestHelper(registerUser, vals.sua);
+    return this._sendAuthRequestHelper(registerUser, vals.sua);
   }
 
   getAuthenticationStatus() {
@@ -50,12 +50,12 @@ export class AuthService {
       returnSecureToken: true,
     };
     return this.httpClient.post<AuthResponsePayload>(targetUrl, payload).pipe(
-      catchError((error) => {
+      catchError((response) => {
         let message = 'Server error.';
-        if (!error.error || !error.error.error) {
-          message = 'Network error.';
+        if (!response.error || !response.error.error) {
+          message = 'Network cannot be reached.';
         } else {
-          switch (error.error.error) {
+          switch (response.error.error.message) {
             case 'EMAIL_EXISTS':
               message = 'Email already registered. Please use another email.';
               break;
