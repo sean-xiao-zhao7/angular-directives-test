@@ -32,8 +32,6 @@ export class User {
 
   setIdToken(idToken: string, expiresIn: string): void {
     this._idToken = idToken;
-    console.log(new Date().toLocaleTimeString());
     this._expireDatetime = new Date(new Date().getTime() + +expiresIn * 1000);
-    console.log(this._expireDatetime.toLocaleTimeString());
   }
 }

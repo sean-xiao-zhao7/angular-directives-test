@@ -9,6 +9,7 @@ import {
 } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
+import { exhaustMap, map, take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -24,15 +25,15 @@ export class AuthGuardService implements CanActivate, CanActivateChild {
     | UrlTree
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
-    return this.authService
-      .getAuthenticationStatus()
-      .then((authenticationStatus) => {
-        if (authenticationStatus) {
+    return this.authService.getAuthedUser().pipe(
+      map((user) => {
+        if (user) {
           return true;
         } else {
-          return this.router.navigate(['/login']);
+          return this.router.createUrlTree(['/login']);
         }
-      });
+      })
+    );
   }
 
   canActivateChild(
