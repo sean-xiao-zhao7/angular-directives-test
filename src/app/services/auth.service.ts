@@ -81,6 +81,7 @@ export class AuthService {
       tap((response) => {
         user.setIdToken(response.idToken, response.expiresIn);
         this._authenticatedUser.next(user);
+        localStorage.setItem('user', JSON.stringify(user));
       })
     );
   }
