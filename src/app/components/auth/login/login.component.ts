@@ -11,7 +11,8 @@ import { AuthService } from 'src/app/services/auth.service';
 export class LoginComponent implements OnInit, OnDestroy {
   loginForm!: FormGroup;
   sub: any;
-  showModal: boolean = true;
+  showModal: boolean = false;
+  loggedInMessage!: string;
 
   constructor(private authService: AuthService) {}
 
@@ -28,10 +29,12 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.loginForm.value.username,
       this.loginForm.value.password
     );
-    this.loginForm.reset();
     this.sub = this.authService.authenticate(loginUser).subscribe(
       (response) => {
         console.log(response);
+        this.loggedInMessage = response.email;
+        this.showModal = true;
+        this.loginForm.reset();
       },
       (errorMessage) => {
         alert(errorMessage);

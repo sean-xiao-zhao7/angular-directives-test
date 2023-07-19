@@ -19,5 +19,5 @@
     />
   </div>
   <button [disabled]="loginForm.invalid" type="submit">Log in</button>
-  <app-modal *ngIf="showModal"></app-modal>
+  <app-modal *ngIf="showModal">Logged in as {{ loggedInMessage }}</app-modal>
 </form>
