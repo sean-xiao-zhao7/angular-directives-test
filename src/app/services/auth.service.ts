@@ -6,6 +6,7 @@ import { AuthRequestPayload } from '../interfaces/auth-request-payload';
 import { AuthResponsePayload } from '../interfaces/auth-response-payload';
 import { catchError, tap } from 'rxjs/operators';
 import { BehaviorSubject, throwError } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +15,7 @@ export class AuthService {
   private _authenticated: boolean = false;
   private _authenticatedUser: BehaviorSubject<any> = new BehaviorSubject(null);
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private router: Router) {}
 
   authenticate(loginUser: User) {
     return this._sendAuthRequestHelper(loginUser, vals.sia);
@@ -22,6 +23,7 @@ export class AuthService {
 
   unauthenticate() {
     this._authenticatedUser.next(null);
+    this.router.navigate(['/']);
   }
 
   register(registerUser: User) {
