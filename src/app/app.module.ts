@@ -23,6 +23,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MyInterceptorService } from './interceptors/my-interceptor.service';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
+import { AuthInterceptorService } from './interceptors/auth-interceptor.service';
 
 const routes: Routes = appRoutes;
 
@@ -59,6 +60,11 @@ const routes: Routes = appRoutes;
     {
       provide: HTTP_INTERCEPTORS,
       useClass: MyInterceptorService,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
       multi: true,
     },
   ],
