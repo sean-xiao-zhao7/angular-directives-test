@@ -20,7 +20,9 @@ export class AuthService {
     return this._sendAuthRequestHelper(loginUser, vals.sia);
   }
 
-  unauthenticate() {}
+  unauthenticate() {
+    this._authenticatedUser.next(null);
+  }
 
   register(registerUser: User) {
     return this._sendAuthRequestHelper(registerUser, vals.sua);
