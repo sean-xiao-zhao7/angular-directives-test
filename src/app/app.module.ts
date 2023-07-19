@@ -24,6 +24,7 @@ import { MyInterceptorService } from './interceptors/my-interceptor.service';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { AuthInterceptorService } from './interceptors/auth-interceptor.service';
+import { ModalComponent } from './components/ui/modal/modal.component';
 
 const routes: Routes = appRoutes;
 
@@ -44,6 +45,7 @@ const routes: Routes = appRoutes;
     FilterPipe,
     LoginComponent,
     RegisterComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,
