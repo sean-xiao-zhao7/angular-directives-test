@@ -6,7 +6,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./modal.component.css'],
 })
 export class ModalComponent implements OnInit {
-  @Output() backgroundClickEmitter = new EventEmitter<null>();
+  @Output() backgroundClickEmitter = new EventEmitter<void>();
 
   constructor() {}
 
