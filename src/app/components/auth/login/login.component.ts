@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class LoginComponent implements OnInit, OnDestroy {
   loginForm!: FormGroup;
   sub: any;
+  showModal: boolean = true;
 
   constructor(private authService: AuthService) {}
 
