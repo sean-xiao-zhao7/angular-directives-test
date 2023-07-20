@@ -1,6 +1,6 @@
-import { LoginComponent } from '../components/auth/login/login.component';
-import { LogoutComponent } from '../components/auth/logout/logout.component';
-import { RegisterComponent } from '../components/auth/register/register.component';
+import { LoginComponent } from '../modules/auth/components/login/login.component';
+import { LogoutComponent } from '../modules/auth/components/logout/logout.component';
+import { RegisterComponent } from '../modules/auth/components/register/register.component';
 import { EditUserComponent } from '../components/edit-user/edit-user.component';
 import { ErrorPageComponent } from '../components/error-page/error-page.component';
 import { HobbyComponent } from '../components/hobby/hobby.component';
