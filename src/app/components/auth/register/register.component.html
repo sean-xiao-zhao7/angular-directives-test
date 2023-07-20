@@ -22,5 +22,10 @@
     <label for="email">Email</label>
     <input type="email" name="email" id="email" formControlName="email" />
   </div>
-  <button [disabled]="registerForm.invalid" type="submit">Sign up</button>
+  <button [disabled]="registerForm.invalid" type="submit" *ngIf="!loading">
+    Sign up
+  </button>
+  <button id="loading-spinner-container" disabled *ngIf="loading">
+    <app-loading-spinner></app-loading-spinner>
+  </button>
 </form>

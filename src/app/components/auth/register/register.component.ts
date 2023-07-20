@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class RegisterComponent implements OnInit, OnDestroy {
   registerForm!: FormGroup;
   sub: any;
+  loading: boolean = false;
 
   constructor(private authService: AuthService) {}
 
@@ -26,15 +27,19 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
+    this.loading = true;
     const registerUser = new User(
       this.registerForm.value.username,
       this.registerForm.value.email,
       this.registerForm.value.password
     );
     this.sub = this.authService.register(registerUser).subscribe(
-      (data: any) => {},
+      (data: any) => {
+        this.loading = false;
+      },
       (errorMessage: any) => {
         alert(`Error: ${errorMessage}`);
+        this.loading = false;
       }
     );
   }
