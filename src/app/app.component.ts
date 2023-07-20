@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './services/auth.service';
+import { BehaviorSubject } from 'rxjs';
+import { User } from './models/user';
 
 @Component({
   selector: 'app-root',
@@ -7,15 +9,14 @@ import { AuthService } from './services/auth.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  authStatus: string = '';
+  authedUser!: User;
+  sub!: any;
 
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.authService.getAuthenticationStatus().then((result: boolean) => {
-      if (result) {
-        this.authStatus = 'authed';
-      }
+    this.sub = this.authService.getAuthedUserBS().subscribe((user) => {
+      this.authedUser = user;
     });
   }
 }

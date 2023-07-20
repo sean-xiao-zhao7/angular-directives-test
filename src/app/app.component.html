@@ -1,4 +1,4 @@
-<nav class="authed" *ngIf="authStatus !== ''">
+<nav class="authed" *ngIf="authedUser">
   <a
     routerLink="/"
     routerLinkActive="active"
@@ -19,7 +19,7 @@
   >
   <a href="#">Logout</a>
 </nav>
-<nav class="unauthed" *ngIf="authStatus === ''">
+<nav class="unauthed" *ngIf="!authedUser">
   <a
     routerLink="/register"
     routerLinkActive="active"

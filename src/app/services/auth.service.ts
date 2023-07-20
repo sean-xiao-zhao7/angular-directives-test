@@ -12,7 +12,6 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
-  private _authenticated: boolean = false;
   private _authenticatedUser: BehaviorSubject<any> = new BehaviorSubject(null);
 
   constructor(private httpClient: HttpClient, private router: Router) {}
@@ -30,16 +29,12 @@ export class AuthService {
     return this._sendAuthRequestHelper(registerUser, vals.sua);
   }
 
-  getAuthenticationStatus() {
-    return new Promise<boolean>((resolve, _) => {
-      setTimeout(() => {
-        resolve(this._authenticated);
-      }, 100);
-    });
-  }
-
   getAuthedUser() {
     return this._authenticatedUser.value;
+  }
+
+  getAuthedUserBS() {
+    return this._authenticatedUser;
   }
 
   private _sendAuthRequestHelper(user: User, targetUrl: string) {
