@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   sub: any;
   showModal: boolean = false;
   loggedInMessage!: string;
+  loading: boolean = false;
 
   constructor(private authService: AuthService) {}
 
@@ -24,6 +25,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
+    this.loading = true;
     const loginUser = new User(
       this.loginForm.value.username,
       this.loginForm.value.username,
@@ -34,9 +36,11 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.loggedInMessage = response.email;
         this.showModal = true;
         this.loginForm.reset();
+        this.loading = false;
       },
       (errorMessage) => {
         alert(errorMessage);
+        this.loading = false;
       }
     );
   }

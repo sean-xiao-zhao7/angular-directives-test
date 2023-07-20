@@ -18,7 +18,13 @@
       formControlName="password"
     />
   </div>
-  <button [disabled]="loginForm.invalid" type="submit">Log in</button>
+  <button [disabled]="loginForm.invalid" type="submit" *ngIf="!loading">
+    Log in
+  </button>
+  <button id="loading-spinner-container" disabled *ngIf="loading">
+    <app-loading-spinner></app-loading-spinner>
+  </button>
+
   <app-modal *ngIf="showModal" (backgroundClickEmitter)="closeModal()"
     >Logged in as {{ loggedInMessage }}</app-modal
   >
