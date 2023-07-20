@@ -26,7 +26,6 @@ export class AuthGuardService implements CanActivate, CanActivateChild {
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
     const user = this.authService.getAuthedUser();
-    console.log(user);
     if (user) {
       return true;
     } else {

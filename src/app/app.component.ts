@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from './services/auth.service';
-import { BehaviorSubject } from 'rxjs';
 import { User } from './models/user';
 
 @Component({
@@ -8,7 +7,7 @@ import { User } from './models/user';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   authedUser!: User;
   sub!: any;
 
@@ -18,5 +17,9 @@ export class AppComponent implements OnInit {
     this.sub = this.authService.getAuthedUserBS().subscribe((user) => {
       this.authedUser = user;
     });
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 }
