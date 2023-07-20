@@ -25,6 +25,7 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { AuthInterceptorService } from './interceptors/auth-interceptor.service';
 import { ModalComponent } from './components/ui/modal/modal.component';
+import { LoadingSpinnerComponent } from './components/ui/loading-spinner/loading-spinner.component';
 
 const routes: Routes = appRoutes;
 
@@ -46,6 +47,7 @@ const routes: Routes = appRoutes;
     LoginComponent,
     RegisterComponent,
     ModalComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,
