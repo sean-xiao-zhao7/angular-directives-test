@@ -1,4 +1,5 @@
 import { LoginComponent } from '../components/auth/login/login.component';
+import { LogoutComponent } from '../components/auth/logout/logout.component';
 import { RegisterComponent } from '../components/auth/register/register.component';
 import { EditUserComponent } from '../components/edit-user/edit-user.component';
 import { ErrorPageComponent } from '../components/error-page/error-page.component';
@@ -44,6 +45,10 @@ export const appRoutes = [
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'logout',
+    component: LogoutComponent,
   },
   {
     path: 'register',

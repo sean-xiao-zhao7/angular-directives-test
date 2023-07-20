@@ -17,7 +17,12 @@
     [routerLinkActiveOptions]="{ exact: true }"
     >Hobby</a
   >
-  <a href="#">Logout</a>
+  <a
+    routerLink="/logout"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+    >Log out</a
+  >
 </nav>
 <nav class="unauthed" *ngIf="!authedUser">
   <a
