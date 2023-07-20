@@ -39,7 +39,7 @@ export class AuthService {
   }
 
   getAuthedUser() {
-    return this._authenticatedUser;
+    return this._authenticatedUser.value;
   }
 
   private _sendAuthRequestHelper(user: User, targetUrl: string) {

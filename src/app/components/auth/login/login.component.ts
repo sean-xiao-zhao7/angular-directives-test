@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   loggedInMessage!: string;
   loading: boolean = false;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -36,7 +37,10 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.loggedInMessage = response.email;
         this.showModal = true;
         this.loginForm.reset();
-        this.loading = false;
+        setTimeout(() => {
+          this.loading = false;
+          this.router.navigate(['/']);
+        }, 1000);
       },
       (errorMessage) => {
         alert(errorMessage);
