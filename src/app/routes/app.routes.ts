@@ -1,6 +1,3 @@
-import { LoginComponent } from '../modules/auth/components/login/login.component';
-import { LogoutComponent } from '../modules/auth/components/logout/logout.component';
-import { RegisterComponent } from '../modules/auth/components/register/register.component';
 import { EditUserComponent } from '../components/edit-user/edit-user.component';
 import { ErrorPageComponent } from '../components/error-page/error-page.component';
 import { HobbyComponent } from '../components/hobby/hobby.component';
@@ -41,18 +38,6 @@ export const appRoutes = [
     path: 'not-found',
     component: ErrorPageComponent,
     data: { message: 'Page not found. (404)' },
-  },
-  {
-    path: 'login',
-    component: LoginComponent,
-  },
-  {
-    path: 'logout',
-    component: LogoutComponent,
-  },
-  {
-    path: 'register',
-    component: RegisterComponent,
   },
   { path: '**', redirectTo: '/not-found' },
 ];
