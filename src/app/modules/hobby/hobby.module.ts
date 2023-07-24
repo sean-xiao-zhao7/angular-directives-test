@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -10,6 +10,6 @@ const routes: Routes = hobbyRoutes;
 
 @NgModule({
   declarations: [HobbyComponent],
-  imports: [CommonModule, FormsModule, RouterModule.forChild(routes)],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule.forChild(routes)],
 })
 export class HobbyModule {}

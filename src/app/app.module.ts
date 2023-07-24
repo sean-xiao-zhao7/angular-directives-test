@@ -12,7 +12,6 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
-import { HobbyComponent } from './modules/hobby/components/hobby/hobby.component';
 
 import { HighlightDirective } from './directives/highlight.directive';
 import { UnlessDirective } from './directives/unless.directive';
@@ -31,6 +30,7 @@ import { appRoutes } from './routes/app.routes';
 
 // modules
 import { AuthModule } from './modules/auth/auth.module';
+import { HobbyModule } from './modules/hobby/hobby.module';
 
 const routes: Routes = appRoutes;
 
@@ -46,7 +46,6 @@ const routes: Routes = appRoutes;
     EditUserComponent,
     NotFoundComponent,
     ErrorPageComponent,
-    HobbyComponent,
     ShortenPipe,
     FilterPipe,
   ],
@@ -57,6 +56,7 @@ const routes: Routes = appRoutes;
     ReactiveFormsModule,
     HttpClientModule,
     AuthModule,
+    HobbyModule,
   ],
   providers: [
     UsersService,
