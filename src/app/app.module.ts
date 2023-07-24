@@ -12,13 +12,8 @@ import { ErrorPageComponent } from './components/error-page/error-page.component
 import { HighlightDirective } from './directives/highlight.directive';
 import { UnlessDirective } from './directives/unless.directive';
 
-import { LoggingService } from './services/logging.service';
-
 import { ShortenPipe } from './pipes/shorten.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
-
-import { MyInterceptorService } from './interceptors/my-interceptor.service';
-import { AuthInterceptorService } from './interceptors/auth-interceptor.service';
 
 import { appRoutes } from './routes/app.routes';
 
@@ -27,6 +22,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { HobbyModule } from './modules/hobby/hobby.module';
 import { UserModule } from './modules/user/user.module';
 import { UIModule } from './modules/ui/ui.module';
+import { CoreModule } from './core.module';
 
 const routes: Routes = appRoutes;
 
@@ -43,27 +39,16 @@ const routes: Routes = appRoutes;
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes),
     FormsModule,
-    ReactiveFormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot(routes),
+
     AuthModule,
+    CoreModule,
     HobbyModule,
     UserModule,
     UIModule,
-  ],
-  providers: [
-    LoggingService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: MyInterceptorService,
-      multi: true,
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptorService,
-      multi: true,
-    },
   ],
   bootstrap: [AppComponent],
 })
