@@ -12,7 +12,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { Hobby } from 'src/app/models/hobby';
 import { HobbyObject } from 'src/app/interfaces/hobby';
-import { vals } from '../../../vals';
+import { vals } from '../../../../../vals';
 
 @Component({
   selector: 'app-hobby',

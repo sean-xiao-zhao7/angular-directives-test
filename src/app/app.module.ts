@@ -16,7 +16,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 import { UserResolverService } from './services/user-resolver.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HobbyComponent } from './components/hobby/hobby.component';
+import { HobbyComponent } from './modules/hobby/components/hobby/hobby.component';
 import { ShortenPipe } from './pipes/shorten.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
