@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
 import { UserComponent } from './components/user/user.component';
@@ -10,6 +9,7 @@ import { UsersService } from 'src/app/services/users.service';
 import { UserResolverService } from 'src/app/services/user-resolver.service';
 
 import { userRoutes } from './routes/user.routes';
+import { UIModule } from '../ui/ui.module';
 
 const routes: Routes = userRoutes;
 
@@ -20,7 +20,7 @@ const routes: Routes = userRoutes;
     EditUserComponent,
     UserDetailsComponent,
   ],
-  imports: [CommonModule, RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(routes), UIModule],
   providers: [UsersService, UserResolverService],
 })
 export class UserModule {}

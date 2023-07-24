@@ -26,6 +26,7 @@ import { appRoutes } from './routes/app.routes';
 import { AuthModule } from './modules/auth/auth.module';
 import { HobbyModule } from './modules/hobby/hobby.module';
 import { UserModule } from './modules/user/user.module';
+import { UIModule } from './modules/ui/ui.module';
 
 const routes: Routes = appRoutes;
 
@@ -49,6 +50,7 @@ const routes: Routes = appRoutes;
     AuthModule,
     HobbyModule,
     UserModule,
+    UIModule,
   ],
   providers: [
     LoggingService,
