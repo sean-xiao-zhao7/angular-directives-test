@@ -7,6 +7,6 @@ import { ModalComponent } from './components/modal/modal.component';
 @NgModule({
   declarations: [LoadingSpinnerComponent, ModalComponent],
   imports: [CommonModule],
-  exports: [LoadingSpinnerComponent, ModalComponent],
+  exports: [CommonModule, LoadingSpinnerComponent, ModalComponent],
 })
 export class UIModule {}
