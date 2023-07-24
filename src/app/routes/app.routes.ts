@@ -1,4 +1,4 @@
-import { EditUserComponent } from '../components/edit-user/edit-user.component';
+import { EditUserComponent } from '../modules/user/components/edit-user/edit-user.component';
 import { ErrorPageComponent } from '../components/error-page/error-page.component';
 import { HomeComponent } from '../components/home/home.component';
 import { UserDetailsComponent } from '../components/user-details/user-details.component';

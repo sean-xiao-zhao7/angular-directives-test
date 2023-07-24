@@ -5,7 +5,7 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
-import { EditUserComponent } from '../components/edit-user/edit-user.component';
+import { EditUserComponent } from '../modules/user/components/edit-user/edit-user.component';
 import { Observable } from 'rxjs';
 
 @Injectable({
