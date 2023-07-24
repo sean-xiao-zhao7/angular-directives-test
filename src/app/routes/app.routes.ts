@@ -12,6 +12,13 @@ export const appRoutes = [
       ),
   },
   {
+    path: 'users',
+    loadChildren: () =>
+      import('src/app/modules/user/user.module').then(
+        (module) => module.UserModule
+      ),
+  },
+  {
     path: 'not-found',
     component: ErrorPageComponent,
     data: { message: 'Page not found. (404)' },

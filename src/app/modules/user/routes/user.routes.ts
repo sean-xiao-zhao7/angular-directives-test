@@ -7,7 +7,7 @@ import { EditUserCanDeactivateService } from 'src/app/services/edit-user-can-dea
 
 export const userRoutes = [
   {
-    path: 'users',
+    path: '',
     component: UsersComponent,
     canActivate: [AuthGuardService],
     children: [

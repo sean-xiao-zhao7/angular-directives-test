@@ -19,7 +19,6 @@ import { appRoutes } from './routes/app.routes';
 
 // modules
 import { AuthModule } from './modules/auth/auth.module';
-import { UserModule } from './modules/user/user.module';
 import { UIModule } from './modules/ui/ui.module';
 import { CoreModule } from './core.module';
 
@@ -44,7 +43,6 @@ const routes: Routes = appRoutes;
 
     AuthModule,
     CoreModule,
-    UserModule,
     UIModule,
   ],
   bootstrap: [AppComponent],
