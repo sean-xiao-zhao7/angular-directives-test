@@ -9,6 +9,10 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
 import { UsersService } from 'src/app/services/users.service';
 import { UserResolverService } from 'src/app/services/user-resolver.service';
 
+import { userRoutes } from './routes/user.routes';
+
+const routes: Routes = userRoutes;
+
 @NgModule({
   declarations: [
     UserComponent,
@@ -16,7 +20,7 @@ import { UserResolverService } from 'src/app/services/user-resolver.service';
     EditUserComponent,
     UserDetailsComponent,
   ],
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule.forChild(routes)],
   providers: [UsersService, UserResolverService],
 })
 export class UserModule {}
