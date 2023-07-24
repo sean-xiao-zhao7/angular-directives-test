@@ -3,7 +3,7 @@ import { HobbyComponent } from '../components/hobby/hobby.component';
 
 export const hobbyRoutes = [
   {
-    path: 'hobby',
+    path: '',
     component: HobbyComponent,
     canActivate: [AuthGuardService],
   },

@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -19,7 +19,6 @@ import { appRoutes } from './routes/app.routes';
 
 // modules
 import { AuthModule } from './modules/auth/auth.module';
-import { HobbyModule } from './modules/hobby/hobby.module';
 import { UserModule } from './modules/user/user.module';
 import { UIModule } from './modules/ui/ui.module';
 import { CoreModule } from './core.module';
@@ -41,12 +40,10 @@ const routes: Routes = appRoutes;
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule,
     RouterModule.forRoot(routes),
 
     AuthModule,
     CoreModule,
-    HobbyModule,
     UserModule,
     UIModule,
   ],
