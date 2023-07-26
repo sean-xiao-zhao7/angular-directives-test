@@ -27,7 +27,7 @@
   <div class="form-group">
     <label>Type</label>
     <select formControlName="type" name="type" id="type">
-      <option value="type" *ngFor="let type of types">
+      <option value="type" *ngFor="let type of types()">
         {{ type | titlecase }}
       </option>
     </select>
@@ -47,9 +47,9 @@
   </div>
   <button [disabled]="form.invalid" type="submit">Submit</button>
 </form>
-<div *ngIf="hobbies.length > 0">
+<div *ngIf="hobbies().length > 0">
   <h2>Hobbies</h2>
-  <div *ngFor="let hobby of hobbies" class="container">
+  <div *ngFor="let hobby of hobbies()" class="container">
     <h3>{{ hobby.name }}</h3>
     <p>{{ hobby.description }}</p>
     <p>{{ hobby.imageUrl }}</p>

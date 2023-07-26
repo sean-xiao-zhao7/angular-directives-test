@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Signal, signal } from '@angular/core';
 import {
   AsyncValidatorFn,
   ReactiveFormsModule,
@@ -25,8 +25,8 @@ import { CommonModule } from '@angular/common';
 })
 export class HobbySignalComponent implements OnInit {
   form!: UntypedFormGroup;
-  types: string[] = ['fun', 'learn', 'train', 'maintain', 'expand'];
-  hobbies: Hobby[] = [];
+  types: any = signal(['fun', 'learn', 'train', 'maintain', 'expand']);
+  hobbies: any = signal([]);
   badHobbies: string[] = ['4', '3'];
 
   constructor(private httpClient: HttpClient) {}
@@ -40,7 +40,7 @@ export class HobbySignalComponent implements OnInit {
       ),
       description: new UntypedFormControl('', Validators.required),
       imageUrl: new UntypedFormControl('', Validators.required),
-      type: new UntypedFormControl(this.types[0], Validators.required),
+      type: new UntypedFormControl(this.types()[0], Validators.required),
       social: new UntypedFormArray([]),
     });
 
@@ -66,7 +66,8 @@ export class HobbySignalComponent implements OnInit {
         })
       )
       .subscribe((data: Hobby[]) => {
-        this.hobbies = data;
+        this.hobbies.set(data);
+        console.log(this.hobbies());
       });
   }
 
@@ -78,7 +79,7 @@ export class HobbySignalComponent implements OnInit {
       this.form.value.type,
       this.form.value.social
     );
-    this.hobbies.push(newHobby);
+    this.hobbies.update((hobbies: Hobby[]) => hobbies.push(newHobby));
     this.form.reset();
     alert('Submitted!');
     this.httpClient.post<Hobby>(vals.root, newHobby).subscribe((data: any) => {
