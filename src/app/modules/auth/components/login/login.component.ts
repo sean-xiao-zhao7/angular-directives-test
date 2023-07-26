@@ -1,10 +1,18 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import {
+  ReactiveFormsModule,
+  UntypedFormControl,
+  UntypedFormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
+import { UIModule } from 'src/app/modules/ui/ui.module';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
+  standalone: true,
+  imports: [ReactiveFormsModule, UIModule],
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
