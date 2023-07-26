@@ -1,0 +1,62 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label>Name</label>
+    <input formControlName="name" type="text" name="name" id="name" />
+  </div>
+  <span *ngIf="form.controls.name.invalid && form.controls.name.touched"
+    >Username invalid.</span
+  >
+  <div class="form-group">
+    <label>Desc.</label>
+    <input
+      formControlName="description"
+      type="text"
+      name="description"
+      id="description"
+    />
+  </div>
+  <div class="form-group">
+    <label>Image URL</label>
+    <input
+      formControlName="imageUrl"
+      type="text"
+      name="imageUrl"
+      id="imageUrl"
+    />
+  </div>
+  <div class="form-group">
+    <label>Type</label>
+    <select formControlName="type" name="type" id="type">
+      <option value="type" *ngFor="let type of types">
+        {{ type | titlecase }}
+      </option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Social media</label>
+    <button (click)="onAddSocial()" type="button">Add</button>
+  </div>
+  <div *ngIf="form.controls.social.value.length > 0" formArrayName="social">
+    <div
+      *ngFor="let control of getSocialControls(); let i = index"
+      class="form-group"
+    >
+      <div></div>
+      <input type="text" [formControlName]="i" id="control.value" />
+    </div>
+  </div>
+  <button [disabled]="form.invalid" type="submit">Submit</button>
+</form>
+<div *ngIf="hobbies.length > 0">
+  <h2>Hobbies</h2>
+  <div *ngFor="let hobby of hobbies" class="container">
+    <h3>{{ hobby.name }}</h3>
+    <p>{{ hobby.description }}</p>
+    <p>{{ hobby.imageUrl }}</p>
+    <p>{{ hobby.type }}</p>
+    <p>Social media</p>
+    <p *ngFor="let social of hobby.social">
+      {{ social }}
+    </p>
+  </div>
+</div>
