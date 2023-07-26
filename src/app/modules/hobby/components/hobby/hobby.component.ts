@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {
   AsyncValidatorFn,
+  ReactiveFormsModule,
   UntypedFormArray,
   UntypedFormControl,
   UntypedFormGroup,
@@ -13,11 +14,14 @@ import { HttpClient } from '@angular/common/http';
 import { Hobby } from 'src/app/models/hobby';
 import { HobbyObject } from 'src/app/interfaces/hobby';
 import { vals } from '../../../../../vals';
+import { CommonModule } from '@angular/common';
 
 @Component({
+  standalone: true,
   selector: 'app-hobby',
   templateUrl: './hobby.component.html',
   styleUrls: ['./hobby.component.css'],
+  imports: [ReactiveFormsModule, CommonModule],
 })
 export class HobbyComponent implements OnInit {
   form!: UntypedFormGroup;
@@ -91,7 +95,9 @@ export class HobbyComponent implements OnInit {
     return (<UntypedFormArray>this.form.get('social')).controls;
   }
 
-  badHobbyValidator(control: UntypedFormControl): { [s: string]: boolean } | null {
+  badHobbyValidator(
+    control: UntypedFormControl
+  ): { [s: string]: boolean } | null {
     if (this.badHobbies.indexOf(control.value) >= 0) {
       return { badHobby: true };
     } else {
