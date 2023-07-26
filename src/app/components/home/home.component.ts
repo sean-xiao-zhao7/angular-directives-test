@@ -4,6 +4,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
 import { HighlightDirective } from 'src/app/directives/highlight.directive';
+import { UnlessDirective } from 'src/app/directives/unless.directive';
 import { FilterPipe } from 'src/app/pipes/filter.pipe';
 import { ShortenPipe } from 'src/app/pipes/shorten.pipe';
 
@@ -18,6 +19,7 @@ import { ShortenPipe } from 'src/app/pipes/shorten.pipe';
     HighlightDirective,
     FilterPipe,
     ShortenPipe,
+    UnlessDirective,
   ],
 })
 export class HomeComponent implements OnInit, OnDestroy {

@@ -8,8 +8,6 @@ import { AppComponent } from './app.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 
-import { UnlessDirective } from './directives/unless.directive';
-
 import { appRoutes } from './routes/app.routes';
 
 // modules
@@ -20,12 +18,7 @@ import { CoreModule } from './core.module';
 const routes: Routes = appRoutes;
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    UnlessDirective,
-    NotFoundComponent,
-    ErrorPageComponent,
-  ],
+  declarations: [AppComponent, NotFoundComponent, ErrorPageComponent],
   imports: [
     BrowserModule,
     FormsModule,
