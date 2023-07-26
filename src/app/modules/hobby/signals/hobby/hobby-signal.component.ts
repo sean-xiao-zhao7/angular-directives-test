@@ -19,11 +19,11 @@ import { CommonModule } from '@angular/common';
 @Component({
   standalone: true,
   selector: 'app-hobby',
-  templateUrl: './hobby.component.html',
-  styleUrls: ['./hobby.component.css'],
+  templateUrl: './hobby-signal.component.html',
+  styleUrls: ['./hobby-signal.component.css'],
   imports: [ReactiveFormsModule, CommonModule],
 })
-export class HobbyComponent implements OnInit {
+export class HobbySignalComponent implements OnInit {
   form!: UntypedFormGroup;
   types: string[] = ['fun', 'learn', 'train', 'maintain', 'expand'];
   hobbies: Hobby[] = [];
