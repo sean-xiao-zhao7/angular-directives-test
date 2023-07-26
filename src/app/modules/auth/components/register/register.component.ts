@@ -1,9 +1,18 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import {
+  FormsModule,
+  ReactiveFormsModule,
+  UntypedFormControl,
+  UntypedFormGroup,
+  Validators,
+} from '@angular/forms';
 import { User } from 'src/app/models/user';
+import { UIModule } from 'src/app/modules/ui/ui.module';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
+  standalone: true,
+  imports: [FormsModule, ReactiveFormsModule, UIModule],
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
