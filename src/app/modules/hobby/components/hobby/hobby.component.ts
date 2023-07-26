@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {
   AsyncValidatorFn,
-  FormArray,
-  FormControl,
-  FormGroup,
+  UntypedFormArray,
+  UntypedFormControl,
+  UntypedFormGroup,
   Validators,
 } from '@angular/forms';
 import { map } from 'rxjs/operators';
@@ -20,7 +20,7 @@ import { vals } from '../../../../../vals';
   styleUrls: ['./hobby.component.css'],
 })
 export class HobbyComponent implements OnInit {
-  form!: FormGroup;
+  form!: UntypedFormGroup;
   types: string[] = ['fun', 'learn', 'train', 'maintain', 'expand'];
   hobbies: Hobby[] = [];
   badHobbies: string[] = ['4', '3'];
@@ -28,16 +28,16 @@ export class HobbyComponent implements OnInit {
   constructor(private httpClient: HttpClient) {}
 
   ngOnInit(): void {
-    this.form = new FormGroup({
-      name: new FormControl(
+    this.form = new UntypedFormGroup({
+      name: new UntypedFormControl(
         '',
         [Validators.required],
         <AsyncValidatorFn>this.usernameDupValidatorAsync.bind(this)
       ),
-      description: new FormControl('', Validators.required),
-      imageUrl: new FormControl('', Validators.required),
-      type: new FormControl(this.types[0], Validators.required),
-      social: new FormArray([]),
+      description: new UntypedFormControl('', Validators.required),
+      imageUrl: new UntypedFormControl('', Validators.required),
+      type: new UntypedFormControl(this.types[0], Validators.required),
+      social: new UntypedFormArray([]),
     });
 
     // get data
@@ -83,15 +83,15 @@ export class HobbyComponent implements OnInit {
   }
 
   onAddSocial() {
-    const socialTextControl = new FormControl('');
-    (<FormArray>this.form.get('social')).push(socialTextControl);
+    const socialTextControl = new UntypedFormControl('');
+    (<UntypedFormArray>this.form.get('social')).push(socialTextControl);
   }
 
   getSocialControls() {
-    return (<FormArray>this.form.get('social')).controls;
+    return (<UntypedFormArray>this.form.get('social')).controls;
   }
 
-  badHobbyValidator(control: FormControl): { [s: string]: boolean } | null {
+  badHobbyValidator(control: UntypedFormControl): { [s: string]: boolean } | null {
     if (this.badHobbies.indexOf(control.value) >= 0) {
       return { badHobby: true };
     } else {
@@ -100,7 +100,7 @@ export class HobbyComponent implements OnInit {
   }
 
   usernameDupValidatorAsync(
-    control: FormControl
+    control: UntypedFormControl
   ):
     | Promise<{ [s: string]: boolean } | null>
     | Observable<{ [s: string]: boolean } | null> {

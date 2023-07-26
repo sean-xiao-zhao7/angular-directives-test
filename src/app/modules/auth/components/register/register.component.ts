@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -9,17 +9,17 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit, OnDestroy {
-  registerForm!: FormGroup;
+  registerForm!: UntypedFormGroup;
   sub: any;
   loading: boolean = false;
 
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.registerForm = new FormGroup({
-      username: new FormControl('FormControl', Validators.required),
-      password: new FormControl('FormControl', Validators.required),
-      email: new FormControl('test@test.com', [
+    this.registerForm = new UntypedFormGroup({
+      username: new UntypedFormControl('FormControl', Validators.required),
+      password: new UntypedFormControl('FormControl', Validators.required),
+      email: new UntypedFormControl('test@test.com', [
         Validators.required,
         Validators.email,
       ]),

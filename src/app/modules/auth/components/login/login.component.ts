@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit, OnDestroy {
-  loginForm!: FormGroup;
+  loginForm!: UntypedFormGroup;
   sub: any;
   showModal: boolean = false;
   loggedInMessage!: string;
@@ -19,9 +19,9 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    this.loginForm = new FormGroup({
-      username: new FormControl('test@test.com', Validators.required),
-      password: new FormControl('', Validators.required),
+    this.loginForm = new UntypedFormGroup({
+      username: new UntypedFormControl('test@test.com', Validators.required),
+      password: new UntypedFormControl('', Validators.required),
     });
   }
 
