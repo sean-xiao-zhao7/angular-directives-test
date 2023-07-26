@@ -1,9 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  ActivatedRouteSnapshot,
-  Resolve,
-  RouterStateSnapshot,
-} from '@angular/router';
+import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import { UsersService } from './users.service';
 import { User } from '../models/user';
@@ -11,7 +7,7 @@ import { User } from '../models/user';
 @Injectable({
   providedIn: 'root',
 })
-export class UserResolverService implements Resolve<User> {
+export class UserResolverService  {
   constructor(private usersService: UsersService) {}
 
   resolve(
