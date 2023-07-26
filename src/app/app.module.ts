@@ -27,7 +27,6 @@ const routes: Routes = appRoutes;
 @NgModule({
   declarations: [
     AppComponent,
-    HighlightDirective,
     UnlessDirective,
     HomeComponent,
     NotFoundComponent,
