@@ -5,15 +5,10 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 
-import { HighlightDirective } from './directives/highlight.directive';
 import { UnlessDirective } from './directives/unless.directive';
-
-import { ShortenPipe } from './pipes/shorten.pipe';
-import { FilterPipe } from './pipes/filter.pipe';
 
 import { appRoutes } from './routes/app.routes';
 
@@ -28,11 +23,8 @@ const routes: Routes = appRoutes;
   declarations: [
     AppComponent,
     UnlessDirective,
-    HomeComponent,
     NotFoundComponent,
     ErrorPageComponent,
-    ShortenPipe,
-    FilterPipe,
   ],
   imports: [
     BrowserModule,

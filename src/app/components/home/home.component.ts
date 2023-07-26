@@ -1,12 +1,24 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
+import { HighlightDirective } from 'src/app/directives/highlight.directive';
+import { FilterPipe } from 'src/app/pipes/filter.pipe';
+import { ShortenPipe } from 'src/app/pipes/shorten.pipe';
 
 @Component({
+  standalone: true,
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
+  imports: [
+    CommonModule,
+    FormsModule,
+    HighlightDirective,
+    FilterPipe,
+    ShortenPipe,
+  ],
 })
 export class HomeComponent implements OnInit, OnDestroy {
   title = 'Home';
