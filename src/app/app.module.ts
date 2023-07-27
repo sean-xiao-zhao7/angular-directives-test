@@ -14,6 +14,7 @@ import { appRoutes } from './routes/app.routes';
 import { AuthModule } from './modules/auth/auth.module';
 import { UIModule } from './modules/ui/ui.module';
 import { CoreModule } from './core.module';
+import { StoreModule } from '@ngrx/store';
 
 const routes: Routes = appRoutes;
 
@@ -28,6 +29,7 @@ const routes: Routes = appRoutes;
     AuthModule,
     CoreModule,
     UIModule,
+    StoreModule.forRoot({}, {}),
   ],
   bootstrap: [AppComponent],
 })
