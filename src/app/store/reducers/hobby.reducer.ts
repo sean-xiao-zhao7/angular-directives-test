@@ -1,8 +1,12 @@
-import { createReducer } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import { Hobby } from 'src/app/models/hobby';
+import { addHobbyAction } from '../actions/hobby.actions';
 
 const initialState: Hobby[] = [];
 
-export const hobbyReducer = createReducer(initialState);
-
-export const hobbyActionTypes = { addHobbyAction: '[Hobby] addHobbyAction' };
+export const hobbyReducer = createReducer(
+  initialState,
+  on(addHobbyAction, (state: Hobby[]) => {
+    return state;
+  })
+);
