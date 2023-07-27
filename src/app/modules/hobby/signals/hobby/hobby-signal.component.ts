@@ -26,7 +26,7 @@ import { CommonModule } from '@angular/common';
 export class HobbySignalComponent implements OnInit {
   form!: UntypedFormGroup;
   types: any = signal(['fun', 'learn', 'train', 'maintain', 'expand']);
-  hobbies: any = signal([]);
+  hobbies: any = signal<Hobby[]>([]);
   badHobbies: string[] = ['4', '3'];
 
   constructor(private httpClient: HttpClient) {}
@@ -79,7 +79,7 @@ export class HobbySignalComponent implements OnInit {
       this.form.value.type,
       this.form.value.social
     );
-    this.hobbies.update((hobbies: Hobby[]) => hobbies.push(newHobby));
+    this.hobbies.mutate((hobbies: Hobby[]) => hobbies.push(newHobby));
     this.form.reset();
     alert('Submitted!');
     this.httpClient.post<Hobby>(vals.root, newHobby).subscribe((data: any) => {
