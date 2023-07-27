@@ -18,6 +18,9 @@ import { AuthModule } from './modules/auth/auth.module';
 import { UIModule } from './modules/ui/ui.module';
 import { CoreModule } from './core.module';
 
+// custom reducers
+import { hobbyReducer } from './store/reducers/hobby.reducer';
+
 const routes: Routes = appRoutes;
 
 @NgModule({
@@ -31,7 +34,7 @@ const routes: Routes = appRoutes;
     AuthModule,
     CoreModule,
     UIModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({ hobbyReducer: hobbyReducer }, {}),
   ],
   bootstrap: [AppComponent],
 })
