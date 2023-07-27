@@ -9,12 +9,14 @@ import {
 } from '@angular/forms';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
 import { HttpClient } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 import { Hobby } from 'src/app/models/hobby';
 import { HobbyObject } from 'src/app/interfaces/hobby';
 import { vals } from '../../../../../vals';
-import { CommonModule } from '@angular/common';
+import { store } from 'src/app/interfaces/store';
 
 @Component({
   standalone: true,
@@ -26,10 +28,12 @@ import { CommonModule } from '@angular/common';
 export class HobbyComponent implements OnInit {
   form!: UntypedFormGroup;
   types: string[] = ['fun', 'learn', 'train', 'maintain', 'expand'];
-  hobbies: Hobby[] = [];
+  hobbies$: any;
   badHobbies: string[] = ['4', '3'];
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private store: Store<store>) {
+    this.hobbies$ = this.store.select('hobbyReducer');
+  }
 
   ngOnInit(): void {
     this.form = new UntypedFormGroup({
