@@ -20,6 +20,7 @@ import { CoreModule } from './core.module';
 
 // custom reducers
 import { hobbyReducer } from './store/reducers/hobby.reducer';
+import { EffectsModule } from '@ngrx/effects';
 
 const routes: Routes = appRoutes;
 
@@ -35,6 +36,7 @@ const routes: Routes = appRoutes;
     CoreModule,
     UIModule,
     StoreModule.forRoot({ hobbyReducer: hobbyReducer }, {}),
+    EffectsModule.forRoot([]),
   ],
   bootstrap: [AppComponent],
 })
