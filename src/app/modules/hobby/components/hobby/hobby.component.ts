@@ -36,7 +36,6 @@ export class HobbyComponent implements OnInit, OnDestroy {
   constructor(private httpClient: HttpClient, private store: Store<store>) {
     this.sub = this.store.select('hobbyReducer').subscribe((hobbies: any) => {
       this.hobbies = hobbies;
-      console.log(this.hobbies);
     });
   }
 

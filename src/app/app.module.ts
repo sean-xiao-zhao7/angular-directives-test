@@ -22,6 +22,9 @@ import { CoreModule } from './core.module';
 import { hobbyReducer } from './store/reducers/hobby.reducer';
 import { EffectsModule } from '@ngrx/effects';
 
+// custom effects
+import { HobbyEffects } from './store/effects/hobby.effects';
+
 const routes: Routes = appRoutes;
 
 @NgModule({
@@ -36,7 +39,7 @@ const routes: Routes = appRoutes;
     CoreModule,
     UIModule,
     StoreModule.forRoot({ hobbyReducer: hobbyReducer }, {}),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([HobbyEffects]),
   ],
   bootstrap: [AppComponent],
 })
