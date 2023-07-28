@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   AsyncValidatorFn,
   ReactiveFormsModule,
@@ -25,14 +25,17 @@ import { store } from 'src/app/interfaces/store';
   styleUrls: ['./hobby.component.css'],
   imports: [ReactiveFormsModule, CommonModule],
 })
-export class HobbyComponent implements OnInit {
+export class HobbyComponent implements OnInit, OnDestroy {
   form!: UntypedFormGroup;
   types: string[] = ['fun', 'learn', 'train', 'maintain', 'expand'];
-  hobbies$: any;
+  sub: any;
+  hobbies: Hobby[] = [];
   badHobbies: string[] = ['4', '3'];
 
   constructor(private httpClient: HttpClient, private store: Store<store>) {
-    this.hobbies$ = this.store.select('hobbyReducer');
+    this.sub = this.store.select('hobbyReducer').subscribe((hobbies: any) => {
+      this.hobbies = hobbies;
+    });
   }
 
   ngOnInit(): void {
@@ -121,5 +124,9 @@ export class HobbyComponent implements OnInit {
         resolve(null);
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 }
