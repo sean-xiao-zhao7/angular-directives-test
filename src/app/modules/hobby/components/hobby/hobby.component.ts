@@ -17,6 +17,7 @@ import { Hobby } from 'src/app/models/hobby';
 import { HobbyObject } from 'src/app/interfaces/hobby';
 import { vals } from '../../../../../vals';
 import { store } from 'src/app/interfaces/store';
+import { addHobbyListAction } from 'src/app/store/actions/hobby.actions';
 
 @Component({
   standalone: true,
@@ -35,6 +36,7 @@ export class HobbyComponent implements OnInit, OnDestroy {
   constructor(private httpClient: HttpClient, private store: Store<store>) {
     this.sub = this.store.select('hobbyReducer').subscribe((hobbies: any) => {
       this.hobbies = hobbies;
+      console.log(this.hobbies);
     });
   }
 
@@ -73,7 +75,7 @@ export class HobbyComponent implements OnInit, OnDestroy {
         })
       )
       .subscribe((data: Hobby[]) => {
-        this.hobbies = data;
+        this.store.dispatch(addHobbyListAction({ hobbies: data }));
       });
   }
 
