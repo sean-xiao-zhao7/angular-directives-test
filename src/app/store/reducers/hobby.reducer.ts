@@ -7,6 +7,7 @@ const initialState: Hobby[] = [];
 export const hobbyReducer = createReducer(
   initialState,
   on(addHobbyAction, (state: Hobby[]) => {
-    return state;
+    const newState = [...state];
+    return newState;
   })
 );
