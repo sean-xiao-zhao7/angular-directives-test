@@ -6,7 +6,11 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "dev:ssr": "ng run test1:serve-ssr",
+    "serve:ssr": "node dist/test1/server/main.js",
+    "build:ssr": "ng build && ng run test1:server",
+    "prerender": "ng run test1:prerender"
   },
   "private": true,
   "dependencies": {
@@ -17,9 +21,12 @@
     "@angular/forms": "^16.1.7",
     "@angular/platform-browser": "^16.1.7",
     "@angular/platform-browser-dynamic": "^16.1.7",
+    "@angular/platform-server": "^16.1.7",
     "@angular/router": "^16.1.7",
     "@ngrx/effects": "^16.1.0",
     "@ngrx/store": "^16.1.0",
+    "@nguniversal/express-engine": "^16.1.1",
+    "express": "^4.15.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.1"
@@ -28,6 +35,8 @@
     "@angular-devkit/build-angular": "^16.1.6",
     "@angular/cli": "^16.1.6",
     "@angular/compiler-cli": "^16.1.7",
+    "@nguniversal/builders": "^16.1.1",
+    "@types/express": "^4.17.0",
     "@types/jasmine": "~3.8.0",
     "@types/node": "^12.11.1",
     "jasmine-core": "~3.8.0",
