@@ -47,7 +47,7 @@
   </div>
   <button [disabled]="form.invalid" type="submit">Submit</button>
 </form>
-<div *ngIf="hobbies.length > 0" [@addHobbyAnimation]="animationState">
+<div [@addHobbyAnimation]="animationState">
   <h2>Hobbies</h2>
   <div *ngFor="let hobby of hobbies" class="container">
     <h3>{{ hobby.name }}</h3>

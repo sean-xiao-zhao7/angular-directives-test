@@ -49,7 +49,7 @@ import { animationStates } from '../../animation/animation-states';
       ),
       transition(
         `${animationStates.hidden} => ${animationStates.expanded}`,
-        animate(200)
+        animate(500)
       ),
     ]),
   ],
