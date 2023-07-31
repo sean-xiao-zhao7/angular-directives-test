@@ -32,14 +32,12 @@ import { addHobbyListAction } from 'src/app/store/actions/hobby.actions';
         'hidden',
         style({
           height: 0,
-          display: 'none',
         })
       ),
       state(
         'expanded',
         style({
           height: '100%',
-          display: 'block',
         })
       ),
     ]),
@@ -56,6 +54,9 @@ export class HobbyComponent implements OnInit, OnDestroy {
   constructor(private httpClient: HttpClient, private store: Store<store>) {
     this.sub = this.store.select('hobbyReducer').subscribe((hobbies: any) => {
       this.hobbies = hobbies;
+      if (this.hobbies.length > 0) {
+        this.animationState = 'expanded';
+      }
     });
   }
 

@@ -49,16 +49,18 @@
 </form>
 <div *ngIf="hobbies.length > 0">
   <h2>Hobbies</h2>
-  <div *ngFor="let hobby of hobbies" class="container">
+  <div
+    *ngFor="let hobby of hobbies"
+    class="container"
+    [@addHobbyAnimation]="animationState"
+  >
     <h3>{{ hobby.name }}</h3>
     <p>{{ hobby.description }}</p>
     <p>{{ hobby.imageUrl }}</p>
     <p>{{ hobby.type }}</p>
     <p>Social media</p>
-    <div [@addHobbyAnimation]="animationState">
-      <p *ngFor="let social of hobby.social">
-        {{ social }}
-      </p>
-    </div>
+    <p *ngFor="let social of hobby.social">
+      {{ social }}
+    </p>
   </div>
 </div>
