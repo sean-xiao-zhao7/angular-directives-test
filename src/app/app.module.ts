@@ -24,6 +24,7 @@ import { EffectsModule } from '@ngrx/effects';
 
 // custom effects
 import { HobbyEffects } from './store/effects/hobby.effects';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const routes: Routes = appRoutes;
 
@@ -33,7 +34,11 @@ const routes: Routes = appRoutes;
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules, initialNavigation: 'enabledBlocking' }),
+    RouterModule.forRoot(routes, {
+      preloadingStrategy: PreloadAllModules,
+      initialNavigation: 'enabledBlocking',
+    }),
+    BrowserAnimationsModule,
 
     AuthModule,
     CoreModule,
