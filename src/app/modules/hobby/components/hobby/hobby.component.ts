@@ -12,13 +12,14 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { state, style, trigger } from '@angular/animations';
+import { state, style, transition, trigger } from '@angular/animations';
 
 import { Hobby } from 'src/app/models/hobby';
 import { HobbyObject } from 'src/app/interfaces/hobby';
 import { vals } from '../../../../../vals';
 import { store } from 'src/app/interfaces/store';
 import { addHobbyListAction } from 'src/app/store/actions/hobby.actions';
+import { animationStates } from '../../animation/animation-states';
 
 @Component({
   standalone: true,
@@ -29,17 +30,18 @@ import { addHobbyListAction } from 'src/app/store/actions/hobby.actions';
   animations: [
     trigger('addHobbyAnimation', [
       state(
-        'hidden',
+        animationStates.hidden,
         style({
           height: 0,
         })
       ),
       state(
-        'expanded',
+        animationStates.expanded,
         style({
           height: '100%',
         })
       ),
+      transition(animationStates.hidden),
     ]),
   ],
 })
@@ -49,13 +51,13 @@ export class HobbyComponent implements OnInit, OnDestroy {
   sub: any;
   hobbies: Hobby[] = [];
   badHobbies: string[] = ['4', '3'];
-  animationState: string = 'hidden';
+  animationState: string = animationStates.hidden;
 
   constructor(private httpClient: HttpClient, private store: Store<store>) {
     this.sub = this.store.select('hobbyReducer').subscribe((hobbies: any) => {
       this.hobbies = hobbies;
       if (this.hobbies.length > 0) {
-        this.animationState = 'expanded';
+        this.animationState = animationStates.expanded;
       }
     });
   }
