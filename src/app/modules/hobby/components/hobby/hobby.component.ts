@@ -12,7 +12,13 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { state, style, transition, trigger } from '@angular/animations';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 
 import { Hobby } from 'src/app/models/hobby';
 import { HobbyObject } from 'src/app/interfaces/hobby';
@@ -32,16 +38,19 @@ import { animationStates } from '../../animation/animation-states';
       state(
         animationStates.hidden,
         style({
-          height: 0,
+          opacity: 0,
         })
       ),
       state(
         animationStates.expanded,
         style({
-          height: '100%',
+          opacity: 1,
         })
       ),
-      transition(animationStates.hidden),
+      transition(
+        `${animationStates.hidden} => ${animationStates.expanded}`,
+        animate(200)
+      ),
     ]),
   ],
 })
