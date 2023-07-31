@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { trigger } from '@angular/animations';
 
 import { Hobby } from 'src/app/models/hobby';
 import { HobbyObject } from 'src/app/interfaces/hobby';
@@ -26,6 +26,7 @@ import { addHobbyListAction } from 'src/app/store/actions/hobby.actions';
   templateUrl: './hobby.component.html',
   styleUrls: ['./hobby.component.css'],
   imports: [ReactiveFormsModule, CommonModule],
+  animations: [trigger('addHobbyAnimation', [])],
 })
 export class HobbyComponent implements OnInit, OnDestroy {
   form!: UntypedFormGroup;

@@ -55,8 +55,10 @@
     <p>{{ hobby.imageUrl }}</p>
     <p>{{ hobby.type }}</p>
     <p>Social media</p>
-    <p *ngFor="let social of hobby.social">
-      {{ social }}
-    </p>
+    <div [@addHobbyAnimation]>
+      <p *ngFor="let social of hobby.social">
+        {{ social }}
+      </p>
+    </div>
   </div>
 </div>
