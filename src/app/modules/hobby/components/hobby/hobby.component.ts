@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { trigger } from '@angular/animations';
+import { state, style, trigger } from '@angular/animations';
 
 import { Hobby } from 'src/app/models/hobby';
 import { HobbyObject } from 'src/app/interfaces/hobby';
@@ -26,7 +26,24 @@ import { addHobbyListAction } from 'src/app/store/actions/hobby.actions';
   templateUrl: './hobby.component.html',
   styleUrls: ['./hobby.component.css'],
   imports: [ReactiveFormsModule, CommonModule],
-  animations: [trigger('addHobbyAnimation', [])],
+  animations: [
+    trigger('addHobbyAnimation', [
+      state(
+        'hidden',
+        style({
+          height: 0,
+          display: 'none',
+        })
+      ),
+      state(
+        'expanded',
+        style({
+          height: '100%',
+          display: 'block',
+        })
+      ),
+    ]),
+  ],
 })
 export class HobbyComponent implements OnInit, OnDestroy {
   form!: UntypedFormGroup;
@@ -34,6 +51,7 @@ export class HobbyComponent implements OnInit, OnDestroy {
   sub: any;
   hobbies: Hobby[] = [];
   badHobbies: string[] = ['4', '3'];
+  animationState: string = 'hidden';
 
   constructor(private httpClient: HttpClient, private store: Store<store>) {
     this.sub = this.store.select('hobbyReducer').subscribe((hobbies: any) => {

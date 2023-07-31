@@ -55,7 +55,7 @@
     <p>{{ hobby.imageUrl }}</p>
     <p>{{ hobby.type }}</p>
     <p>Social media</p>
-    <div [@addHobbyAnimation]>
+    <div [@addHobbyAnimation]="animationState">
       <p *ngFor="let social of hobby.social">
         {{ social }}
       </p>
