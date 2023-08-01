@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
@@ -25,6 +25,7 @@ import { EffectsModule } from '@ngrx/effects';
 // custom effects
 import { HobbyEffects } from './store/effects/hobby.effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 const routes: Routes = appRoutes;
 
@@ -45,6 +46,12 @@ const routes: Routes = appRoutes;
     UIModule,
     StoreModule.forRoot({ hobbyReducer: hobbyReducer }, {}),
     EffectsModule.forRoot([HobbyEffects]),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   bootstrap: [AppComponent],
 })
