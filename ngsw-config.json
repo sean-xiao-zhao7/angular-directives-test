@@ -31,7 +31,13 @@
   "dataGroups": [
     {
       "name": "posts",
-      "urls": []
+      "urls": [],
+      "cacheConfig": {
+        "maxSize": 2,
+        "maxAge": "60m",
+        "timeout": "10s",
+        "strategy": "performance"
+      }
     }
   ]
 }
