@@ -27,5 +27,11 @@
         ]
       }
     }
+  ],
+  "dataGroups": [
+    {
+      "name": "posts",
+      "urls": []
+    }
   ]
 }
