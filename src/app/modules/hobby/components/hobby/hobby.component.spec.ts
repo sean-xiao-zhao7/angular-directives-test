@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HobbyComponent } from './hobby.component';
+import { Store } from '@ngrx/store';
 
 describe('HobbyComponent', () => {
   let component: HobbyComponent;
@@ -22,5 +23,8 @@ describe('HobbyComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Should have an store instance', () => {});
+  it('Should have an store instance', () => {
+    let store = fixture.debugElement.injector.get(Store);
+    expect(store).toBeTruthy();
+  });
 });
