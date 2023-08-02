@@ -1,7 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { StoreModule, Store } from '@ngrx/store';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { HobbyComponent } from './hobby.component';
-import { Store } from '@ngrx/store';
+import { hobbyReducer } from 'src/app/store/reducers/hobby.reducer';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('HobbyComponent', () => {
   let component: HobbyComponent;
@@ -9,7 +12,11 @@ describe('HobbyComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HobbyComponent],
+      imports: [
+        HttpClientTestingModule,
+        StoreModule.forRoot({ hobbyReducer: hobbyReducer }, {}),
+        NoopAnimationsModule,
+      ],
     }).compileComponents();
   });
 
