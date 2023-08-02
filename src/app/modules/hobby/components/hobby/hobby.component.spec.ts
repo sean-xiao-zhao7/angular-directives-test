@@ -8,9 +8,8 @@ describe('HobbyComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HobbyComponent ]
-    })
-    .compileComponents();
+      declarations: [HobbyComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -22,4 +21,6 @@ describe('HobbyComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Should have an store instance', () => {});
 });
