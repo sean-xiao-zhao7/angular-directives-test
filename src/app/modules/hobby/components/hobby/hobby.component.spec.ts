@@ -25,6 +25,7 @@ describe('HobbyComponent', () => {
 
   it('Should have an store instance', () => {
     let store = fixture.debugElement.injector.get(Store);
+    fixture.detectChanges();
     expect(store).toBeTruthy();
   });
 });
