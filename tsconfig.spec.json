@@ -6,5 +6,5 @@
     "types": ["jasmine"]
   },
   "files": ["src/test.ts", "src/polyfills.ts"],
-  "include": ["src/app/modules/hobby/components/hobby"]
+  "include": ["src/app/pipes/shorten.pipe.spec.ts"]
 }
